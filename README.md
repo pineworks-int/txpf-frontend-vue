@@ -111,8 +111,8 @@ CREATE TABLE experiences (
 
 #### Issue 1.1: Environment Setup
 
-- [ ] Install and configure Vue Router
-- [ ] Install and configure Pinia
+- [x] Install and configure Vue Router
+- [x] Install and configure Pinia
 - [ ] Set up Supabase project and authentication
 - [ ] Configure TypeScript types for all services
 - [ ] Test development environment
