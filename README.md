@@ -121,8 +121,8 @@ CREATE TABLE experiences (
 
 - [x] Create responsive navigation component
 - [x] Implement basic routing structure
-- [ ] Build hero section layout
-- [ ] Create footer component
+- [x] Build hero section layout
+- [x] Create footer component
 - [ ] Ensure mobile responsiveness
 
 #### Issue 1.3: Authentication System
