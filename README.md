@@ -113,7 +113,7 @@ CREATE TABLE experiences (
 
 - [x] Install and configure Vue Router
 - [x] Install and configure Pinia
-- [ ] Set up Supabase project and authentication
+- [x] Set up Supabase project and authentication
 - [ ] Configure TypeScript types for all services
 - [ ] Test development environment
 
