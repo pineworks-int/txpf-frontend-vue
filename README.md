@@ -114,8 +114,8 @@ CREATE TABLE experiences (
 - [x] Install and configure Vue Router
 - [x] Install and configure Pinia
 - [x] Set up Supabase project and authentication
-- [ ] Configure TypeScript types for all services
-- [ ] Test development environment
+- [x] Configure TypeScript types for all services
+- [x] Test development environment
 
 #### Issue 1.2: Basic Layout Structure
 
