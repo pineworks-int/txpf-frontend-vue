@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// logic for toggles will be added here
 </script>
 
 <template>
@@ -12,7 +11,7 @@
     </div>
     <div class="links">
       <!-- social or legal links here -->
-      <p>&copy; {{ new Date().getFullYear() }} T3hx @ PineWorks Int. All Rights Reserved.</p>
+      <p>&copy; {{ new Date().getFullYear() }} T∋hx @ PineWorks Int. All Rights Reserved.</p>
     </div>
   </footer>
 </template>
@@ -23,7 +22,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  background-color: #333; /* temporary */
+  background-color: #333;
+  /* temporary */
   color: white;
 }
 </style>
