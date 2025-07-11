@@ -1,5 +1,5 @@
 import supabase from '../lib/supabase'
-import useAuthStore from '../stores/auth'
+import { useAuthStore } from '../stores/auth'
 
 export default function useAuth() {
   const authStore = useAuthStore()
