@@ -1,27 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import supabase from '../../lib/supabase'
-import { useAuthStore } from '../../stores/auth'
+import useAuth from '../../composables/useAuth'
 import { useUiStore } from '../../stores/ui'
 
 const uiStore = useUiStore()
-const authStore = useAuthStore()
+const { logIn } = useAuth()
 const userEmail = ref('')
 const userPassword = ref('')
 
 async function handleSubmit() {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: userEmail.value,
-    password: userPassword.value,
-  })
-
-  if (error) {
-    console.error('Login Error:', error)
-  }
-  else {
-    console.warn('Login Success:', data)
-    authStore.setUser(data.user)
+  try {
+    await logIn(userEmail.value, userPassword.value)
+    console.warn('[AuthModal] Login Success !')
     uiStore.closeAuthModal()
+  }
+  catch (error) {
+    console.error('[AuthModal] Login Failure : ', error)
   }
 }
 </script>

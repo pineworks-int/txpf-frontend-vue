@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import useAuth from '../../composables/useAuth'
 import { useAuthStore } from '../../stores/auth'
 import { useUiStore } from '../../stores/ui'
 
 const isMenuOpen = ref(false)
+const { logOut } = useAuth()
 const uiStore = useUiStore()
 const authStore = useAuthStore()
 
 function handleLogout() {
-  authStore.clearUser()
+  logOut()
 }
 </script>
 
