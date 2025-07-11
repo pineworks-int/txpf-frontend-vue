@@ -32,6 +32,7 @@ Professional, futuristic developer portfolio landing page built with Vue.js and 
 
 ## 📁 Component Architecture
 
+```
 src/
 ├── components/
 │ ├── layout/
@@ -65,6 +66,7 @@ src/
 │ └── static.json # Hero, navigation data
 └── types/
 └── index.ts # TypeScript interfaces
+```
 
 ## 🗄️ Database Schema (Supabase)
 
@@ -129,8 +131,8 @@ CREATE TABLE experiences (
 
 - [x] Set up Supabase authentication
 - [x] Create login/signup modal
-- [ ] Implement JWT token handling
-- [ ] Create protected route middleware
+- [x] Implement JWT token handling
+- [x] Create protected route middleware
 - [x] Test authentication flow
 
 ### Phase 2: Core Content (5-7 days)
