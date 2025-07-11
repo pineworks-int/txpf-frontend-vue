@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useUiStore } from '../../stores/ui'
 
 const isMenuOpen = ref(false)
+const uiStore = useUiStore()
 </script>
 
 <template>
@@ -23,7 +25,10 @@ const isMenuOpen = ref(false)
       </li>
     </ul>
     <div class="hidden md:flex items-center gap-4">
-      <button class="bg-blue-500 text-white px-4 py-2 rounded">
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+        @click="uiStore.openAuthModal"
+      >
         Sign In
       </button>
       <span>AVATAR</span>
@@ -50,7 +55,10 @@ const isMenuOpen = ref(false)
           </router-link>
         </li>
         <li>
-          <button class="bg-blue-500 text-white px-4 py-2 rounded">
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+            @click="uiStore.openAuthModal"
+          >
             Sign In
           </button>
         </li>
