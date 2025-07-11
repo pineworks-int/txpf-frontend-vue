@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useAuthStore } from '../../stores/auth'
 import { useUiStore } from '../../stores/ui'
 
 const isMenuOpen = ref(false)
 const uiStore = useUiStore()
+const authStore = useAuthStore()
+
+function handleLogout() {
+  authStore.clearUser()
+}
 </script>
 
 <template>
@@ -26,12 +32,20 @@ const uiStore = useUiStore()
     </ul>
     <div class="hidden md:flex items-center gap-4">
       <button
+        v-if="authStore.isUserLoggedIn"
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+        @click="handleLogout"
+      >
+        Log Out
+      </button>
+      <button
+        v-else
         class="bg-blue-500 text-white px-4 py-2 rounded"
         @click="uiStore.openAuthModal"
       >
-        Sign In
+        Log In
       </button>
-      <span>AVATAR</span>
+      <span v-if="authStore.isUserLoggedIn">AVATAR</span>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -56,10 +70,18 @@ const uiStore = useUiStore()
         </li>
         <li>
           <button
+            v-if="!authStore.isUserLoggedIn"
             class="bg-blue-500 text-white px-4 py-2 rounded"
             @click="uiStore.openAuthModal"
           >
-            Sign In
+            Log In
+          </button>
+          <button
+            v-else
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+            @click="handleLogout"
+          >
+            Log Out
           </button>
         </li>
       </ul>
