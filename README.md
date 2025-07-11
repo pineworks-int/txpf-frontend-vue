@@ -127,8 +127,8 @@ CREATE TABLE experiences (
 
 #### Issue 1.3: Authentication System
 
-- [ ] Set up Supabase authentication
-- [ ] Create login/signup modal
+- [x] Set up Supabase authentication
+- [x] Create login/signup modal
 - [ ] Implement JWT token handling
 - [ ] Create protected route middleware
 - [ ] Test authentication flow
