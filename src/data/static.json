@@ -6,35 +6,35 @@
             "greetings": {
                 "morning": {
                     "mainUser": {
-                        "message": "Good morning, ..."
+                        "message": "Good morning T∋hx!"
                     },
                     "guestUser": {
-                        "message": "Good morning, ..."
+                        "message": "Good morning dear guest!"
                     },
                     "unknownUser": {
-                        "message": "Good morning, ..."
+                        "message": "Good morning fellow stranger!"
                     }
                 },
                 "afternoon": {
                     "mainUser": {
-                        "message": "Good afternoon, ..."
+                        "message": "Good afternoon T∋hx!"
                     },
                     "guestUser": {
-                        "message": "Good afternoon, ..."
+                        "message": "Good afternoon dear guest!"
                     },
                     "unknownUser": {
-                        "message": "Good afternoon, ..."
+                        "message": "Good afternoon fellow stranger!"
                     }
                 },
                 "evening": {
                     "mainUser": {
-                        "message": "Good evening, ..."
+                        "message": "Good evening T∋hx!"
                     },
                     "guestUser": {
-                        "message": "Good evening, ..."
+                        "message": "Good evening dear guest!"
                     },
                     "unknownUser": {
-                        "message": "Good evening, ..."
+                        "message": "Good evening fellow stranger!"
                     }
                 }
             }
