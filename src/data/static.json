@@ -40,7 +40,10 @@
             }
         },
         "navigation": [
-            
+            {
+                "label": "Personal Projects",
+                "url": "#personal-projects"
+            }
         ]
     },
     "fr": {
@@ -84,7 +87,10 @@
             }
         },
         "navigation": [
-            
+            {
+                "label": "Projets Personnels",
+                "url": "#personal-projects"
+            }
         ]
     }
 }
