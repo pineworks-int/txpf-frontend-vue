@@ -143,7 +143,7 @@ CREATE TABLE experiences (
 
 - [x] Create JSON structure for static content
 - [x] Implement hero section with dynamic content
-- [ ] Build navigation with smooth scrolling
+- [x] Build navigation with smooth scrolling
 - [x] Create composables for data loading
 - [ ] Add loading states and error handling
 
