@@ -1,37 +1,44 @@
 <script setup lang="ts">
-import type { ProjectProps } from '@/types/project.type'
-import { ref } from 'vue'
-import ProjectCard from './ProjectCard.vue'
+import { onMounted } from 'vue'
+import ProjectCard from '@/components/projects/ProjectCard.vue'
+import { useProjects } from '@/composables/useProjects'
 
-const mockProjects = ref<ProjectProps[]>([
-  {
-    title: 'My First Awesome Project',
-    description: 'This is a detailed description of the project. It uses cutting-edge technologies to solve a real-world problem.',
-    technologies: ['Vue.js', 'TypeScript', 'TailwindCSS'],
-    imageUrl: 'https://via.assets.so/img.jpg?w=400&h=200&tc=blue&bg=#cecece', // A temporary placeholder image
-    demoUrl: '#',
-    githubRepoUrl: '#',
-    githubProjectUrl: '#',
-  },
-  {
-    title: 'My Second Awesome Project',
-    description: 'This is a detailed description of the project. It uses cutting-edge technologies to solve a real-world problem.',
-    technologies: ['Nest.js', 'TypeScript', 'PostgreSQL'],
-    imageUrl: 'https://via.assets.so/img.jpg?w=400&h=200&tc=blue&bg=#cecece', // A temporary placeholder image
-    demoUrl: '#',
-    githubRepoUrl: '#',
-    githubProjectUrl: '#',
-  },
-])
+const { projects, isLoading, error, fetchProjects } = useProjects()
+
+onMounted(() => {
+  fetchProjects()
+})
 </script>
 
 <template>
   <section class="py-12">
     <h2 class="text-3xl font-bold text-center mb-8">
-      My Projects
+      My Personal Projects
     </h2>
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <ProjectCard v-for="project in mockProjects" :key="project.title" v-bind="project" />
+    <!-- * if loading -->
+    <div
+      v-if="isLoading"
+      class="text-center"
+    >
+      <p>Loading projects...</p>
+    </div>
+    <!-- * if error -->
+    <div
+      v-else-if="error"
+      class="text-center text-red-500"
+    >
+      <p>Oops! Something went wrong: {{ error.message }}</p>
+    </div>
+    <!-- * if success -->
+    <div
+      v-else-if="projects.length > 0"
+      class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    >
+      <ProjectCard v-for="project in projects" :key="project.title" v-bind="project" />
+    </div>
+    <!-- * if empty -->
+    <div v-else class="text-center">
+      <p>No projects found.</p>
     </div>
   </section>
 </template>
