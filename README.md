@@ -141,11 +141,11 @@ CREATE TABLE experiences (
 
 #### Issue 2.1: Static Data Implementation
 
-- [ ] Create JSON structure for static content
-- [ ] Implement hero section with dynamic content
-- [ ] Build navigation with smooth scrolling
-- [ ] Create composables for data loading
-- [ ] Add loading states and error handling
+- [x] Create JSON structure for static content
+- [x] Implement hero section with dynamic content
+- [x] Build navigation with smooth scrolling
+- [x] Create composables for data loading
+- [x] Add loading states and error handling
 
 #### Issue 2.2: Project Showcase
 

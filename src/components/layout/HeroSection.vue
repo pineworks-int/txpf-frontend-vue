@@ -1,16 +1,50 @@
 <script setup lang="ts">
-// logic to be added later
+import { computed } from 'vue'
+import { useContent } from '@/composables/useContent'
+import { useAuthStore } from '@/stores/auth'
+
+const authStore = useAuthStore()
+const { content } = useContent()
+
+const timeOfDay = computed(() => {
+  const hours = new Date().getHours()
+  if (hours < 12)
+    return 'morning'
+  if (hours < 18)
+    return 'afternoon'
+  return 'evening'
+})
+
+const userType = computed(() => {
+  if (!authStore.user) {
+    return 'unknownUser'
+  }
+  else if (authStore.user.id === import.meta.env.VITE_MAIN_USER_ID) {
+    return 'mainUser'
+  }
+  else {
+    return 'guestUser'
+  }
+})
+
+const greetingMessage = computed(() => {
+  if (authStore.isUserLoading) {
+    return 'Loading...'
+  }
+
+  return content.value.hero.greetings[timeOfDay.value][userType.value].message
+})
 </script>
 
 <template>
   <section class="hero-section">
     <div class="main-content">
-      <h1>Developer. Thinker. Creator.</h1>
-      <p>Building digital experiences from front to back.</p>
+      <h1>{{ content.hero.title }}</h1>
+      <p>{{ content.hero.subtitle }}</p>
     </div>
     <aside class="greeting-content">
       <!-- maybe RSS feed later -->
-      <p>Welcome Fellow Stranger!</p>
+      <p>{{ greetingMessage }}</p>
     </aside>
   </section>
 </template>
