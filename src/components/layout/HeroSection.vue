@@ -28,6 +28,10 @@ const userType = computed(() => {
 })
 
 const greetingMessage = computed(() => {
+  if (authStore.isUserLoading) {
+    return 'Loading...'
+  }
+
   return content.value.hero.greetings[timeOfDay.value][userType.value].message
 })
 </script>
