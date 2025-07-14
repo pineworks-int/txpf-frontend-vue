@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null)
+  const isUserLoading = ref(true)
   const isUserLoggedIn = computed(() => user.value !== null)
 
   const setUser = (newUser: User) => {
@@ -14,5 +15,5 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = null
   }
 
-  return { user, isUserLoggedIn, setUser, clearUser }
+  return { user, isUserLoading, isUserLoggedIn, setUser, clearUser }
 })
