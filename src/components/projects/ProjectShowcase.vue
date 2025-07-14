@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import ProjectCard from '@/components/projects/ProjectCard.vue'
-import { useProjects } from '@/composables/useProjects'
+import { onMounted } from 'vue';
+import { storeToRefs } from 'pinia';
+import ProjectCard from '@/components/projects/ProjectCard.vue';
+import { useProjectsStore } from '@/stores/projects';
+import { useProjects } from '@/composables/useProjects';
 
-const { projects, isLoading, error, fetchProjects } = useProjects()
+const projectsStore = useProjectsStore();
+const { projects, isLoading, error } = storeToRefs(projectsStore);
+const { fetchProjects } = useProjects();
 
 onMounted(() => {
-  fetchProjects()
-})
+  fetchProjects();
+});
 </script>
 
 <template>

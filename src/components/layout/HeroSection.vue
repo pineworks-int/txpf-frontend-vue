@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
-import { useContent } from '@/composables/useContent'
 import { useAuthStore } from '@/stores/auth'
+import { useContentStore } from '@/stores/content'
 
 const authStore = useAuthStore()
-const { content } = useContent()
+const contentStore = useContentStore()
+const { content } = storeToRefs(contentStore)
 
 const timeOfDay = computed(() => {
   const hours = new Date().getHours()

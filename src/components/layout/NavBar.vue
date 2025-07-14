@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import { useContent } from '@/composables/useContent'
-import useAuth from '../../composables/useAuth'
-import { useAuthStore } from '../../stores/auth'
-import { useUiStore } from '../../stores/ui'
+import useAuth from '@/composables/useAuth'
+import { useAuthStore } from '@/stores/auth'
+import { useContentStore } from '@/stores/content'
+import { useUiStore } from '@/stores/ui'
 
 const isMenuOpen = ref(false)
 const { logOut } = useAuth()
 const uiStore = useUiStore()
 const authStore = useAuthStore()
-const { content } = useContent()
+const contentStore = useContentStore()
+const { content } = storeToRefs(contentStore)
 
 function handleLogout() {
   logOut()
