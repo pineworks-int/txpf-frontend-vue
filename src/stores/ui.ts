@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 export const useUiStore = defineStore('ui', () => {
   const isAuthModalOpen = ref(false)
+  const isFilterDropdownOpen = ref(false)
 
   const openAuthModal = () => {
     isAuthModalOpen.value = true
@@ -12,9 +13,20 @@ export const useUiStore = defineStore('ui', () => {
     isAuthModalOpen.value = false
   }
 
+  const openFilterDropdown = () => {
+    isFilterDropdownOpen.value = !isFilterDropdownOpen.value
+  }
+
+  const closeFilterDropdown = () => {
+    isFilterDropdownOpen.value = false
+  }
+
   return {
     isAuthModalOpen,
+    isFilterDropdownOpen,
     openAuthModal,
     closeAuthModal,
+    openFilterDropdown,
+    closeFilterDropdown,
   }
 })
