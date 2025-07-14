@@ -5,6 +5,7 @@ export default function useAuth() {
   const authStore = useAuthStore()
 
   const logIn = async (email: string, password: string) => {
+    authStore.isUserLoading = true
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -19,6 +20,7 @@ export default function useAuth() {
   }
 
   const logOut = async () => {
+    authStore.isUserLoading = true
     const { error } = await supabase.auth.signOut()
 
     if (error) {
@@ -29,20 +31,10 @@ export default function useAuth() {
     console.warn('[useAuth] User successfully logged out')
   }
 
-  // const signUp = async (email: string, password: string) => {
-  //   const { error } = await supabase.auth.signUp({
-  //     email,
-  //     password,
-  //   })
-
-  //   if (error) {
-  //     throw error
-  //   }
-  // }
-
   const listenForAuthState = () => {
     supabase.auth.onAuthStateChange((_event, session) => {
       authStore.user = session?.user ?? null
+      authStore.isUserLoading = false
     })
   }
 
