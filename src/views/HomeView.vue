@@ -8,5 +8,5 @@ import ProjectShowcase from '@/components/projects/ProjectShowcase.vue'
     <h1>Home Page</h1>
   </div>
   <HeroSection />
-  <ProjectShowcase id="personal-projects" />
+  <ProjectShowcase />
 </template>
