@@ -149,11 +149,11 @@ CREATE TABLE experiences (
 
 #### Issue 2.2: Project Showcase
 
-- [ ] Design Supabase schema for projects
-- [ ] Create project card components
-- [ ] Implement project filtering/sorting
-- [ ] Add project detail modal/page
-- [ ] Connect to authentication for demo access
+- [x] Design Supabase schema for projects
+- [x] Create project card components
+- [x] Implement project filtering/sorting
+- [x] Add project detail modal/page
+- [x] Connect to authentication for demo access
 
 #### Issue 2.3: About Section
 
