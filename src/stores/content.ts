@@ -1,25 +1,30 @@
-import type { ContentBranch } from '@/types/content.type'
+import type { Content } from '@/types/content.type'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import staticData from '@/data/static.json'
 
+const { content } = staticData
+
 export const useContentStore = defineStore('content', () => {
-  // ~--- STATE ---
+  // ~-- STATES ---
   const currentLanguage = ref<'en' | 'fr'>('en')
 
-  // ~--- ACTIONS ---
-  function setLanguage(language: 'en' | 'fr') {
+  // ~-- GETTERS ---
+  const getContent = computed((): Content => {
+    return content[currentLanguage.value]
+  })
+
+  // ~-- SETTERS ---
+  const setLanguage = (language: 'en' | 'fr') => {
     currentLanguage.value = language
   }
 
-  // ~--- GETTERS ---
-  const content = computed((): ContentBranch => {
-    return staticData[currentLanguage.value]
-  })
-
   return {
+    // STATES
     currentLanguage,
-    content,
+    // GETTERS
+    getContent,
+    // SETTERS
     setLanguage,
   }
 })
