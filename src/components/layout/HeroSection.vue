@@ -6,7 +6,7 @@ import { useContentStore } from '@/stores/content'
 
 const authStore = useAuthStore()
 const contentStore = useContentStore()
-const { content } = storeToRefs(contentStore)
+const { getContent } = storeToRefs(contentStore)
 
 const timeOfDay = computed(() => {
   const hours = new Date().getHours()
@@ -21,7 +21,7 @@ const userType = computed(() => {
   if (!authStore.user) {
     return 'unknownUser'
   }
-  else if (authStore.user.id === import.meta.env.VITE_MAIN_USER_ID) {
+  else if (authStore.user.id === import.meta.env.VITE_SUPABASE_MAINUSER_ID) {
     return 'mainUser'
   }
   else {
@@ -34,15 +34,15 @@ const greetingMessage = computed(() => {
     return 'Loading...'
   }
 
-  return content.value.hero.greetings[timeOfDay.value][userType.value].message
+  return getContent.value.hero.greetings[timeOfDay.value][userType.value].message
 })
 </script>
 
 <template>
   <section class="hero-section">
     <div class="main-content">
-      <h1>{{ content.hero.title }}</h1>
-      <p>{{ content.hero.subtitle }}</p>
+      <h1>{{ getContent.hero.title }}</h1>
+      <p>{{ getContent.hero.subtitle }}</p>
     </div>
     <aside class="greeting-content">
       <!-- maybe RSS feed later -->

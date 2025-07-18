@@ -5,17 +5,17 @@ import { useUiStore } from '@/stores/ui'
 const props = defineProps<ProjectProps>()
 
 const uiStore = useUiStore()
-const { openProjectDetailModal } = uiStore
+const { setOpenProjectDetailModal } = uiStore
 
 function handleCardClick() {
-  openProjectDetailModal(props)
+  setOpenProjectDetailModal(props)
 }
 </script>
 
 <template>
   <div
     class="border rounded-lg p-4 cursor-pointer hover:shadow-lg transition-shadow"
-    @click="handleCardClick" 
+    @click="handleCardClick"
   >
     <h3 class="text-lg font-bold">
       {{ props.title }}
@@ -26,7 +26,7 @@ function handleCardClick() {
       Tech stack:
       <ul>
         <li
-          v-for="tech in props.technologies" 
+          v-for="tech in props.technologies"
           :key="tech"
           class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
         >

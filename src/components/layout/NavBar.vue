@@ -11,7 +11,7 @@ const { logOut } = useAuth()
 const uiStore = useUiStore()
 const authStore = useAuthStore()
 const contentStore = useContentStore()
-const { content } = storeToRefs(contentStore)
+const { getContent } = storeToRefs(contentStore)
 
 function handleLogout() {
   logOut()
@@ -27,7 +27,7 @@ function handleLogout() {
 
     <!-- Desktop Menu -->
     <ul class="hidden md:flex items-center gap-4">
-      <li v-for="item in content.navigation" :key="item.label">
+      <li v-for="item in getContent.nav.uiLinks" :key="item.label">
         <a :href="item.url" class="hover:text-blue-500">
           {{ item.label }}
         </a>
@@ -49,7 +49,7 @@ function handleLogout() {
       <button
         v-else
         class="bg-blue-500 text-white px-4 py-2 rounded"
-        @click="uiStore.openAuthModal"
+        @click="uiStore.setOpenAuthModal"
       >
         Log In
       </button>
@@ -68,7 +68,7 @@ function handleLogout() {
     <!-- Mobile Menu -->
     <div v-if="isMenuOpen" class="absolute top-16 left-0 w-full bg-gray-100 md:hidden">
       <ul class="flex flex-col items-center gap-4 p-4">
-        <li v-for="item in content.navigation" :key="item.label">
+        <li v-for="item in getContent.nav.uiLinks" :key="item.label">
           <a :href="item.url" class="hover:text-blue-500">
             {{ item.label }}
           </a>
@@ -82,7 +82,7 @@ function handleLogout() {
           <button
             v-if="!authStore.isUserLoggedIn"
             class="bg-blue-500 text-white px-4 py-2 rounded"
-            @click="uiStore.openAuthModal"
+            @click="uiStore.setOpenAuthModal"
           >
             Log In
           </button>

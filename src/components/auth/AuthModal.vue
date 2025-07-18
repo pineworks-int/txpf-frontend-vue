@@ -12,7 +12,7 @@ async function handleSubmit() {
   try {
     await logIn(userEmail.value, userPassword.value)
     console.warn('[AuthModal] Login Success !')
-    uiStore.closeAuthModal()
+    uiStore.setCloseAuthModal()
   }
   catch (error) {
     console.error('[AuthModal] Login Failure : ', error)
@@ -32,7 +32,7 @@ async function handleSubmit() {
         </h2>
         <button
           class="text-gray-500 hover:text-gray-800"
-          @click="uiStore.closeAuthModal()"
+          @click="uiStore.setCloseAuthModal()"
         >
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
