@@ -1,4 +1,4 @@
-export interface ContentBranch {
+export interface Content {
   hero: {
     title: string
     subtitle: string
@@ -10,8 +10,10 @@ export interface ContentBranch {
       }
     }
   }
-  navigation: {
-    label: string
-    url: string
-  }[]
+  nav: {
+    uiLinks: {
+      label: string
+      url: string
+    }[]
+  }
 }
