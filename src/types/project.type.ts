@@ -7,3 +7,10 @@ export interface ProjectProps {
   githubRepoUrl: string
   githubProjectUrl: string
 }
+
+export interface ProjectStaticData {
+  [id: string]: {
+    url: string
+    description: string
+  }
+}
