@@ -10,44 +10,44 @@ export const useUiStore = defineStore('ui', () => {
   const selectedProject = ref<ProjectProps | null>(null)
 
   // ~-- SETTERS ---
-  const openAuthModal = () => {
+  const setOpenAuthModal = () => {
     isAuthModalOpen.value = true
   }
 
-  const closeAuthModal = () => {
+  const setCloseAuthModal = () => {
     isAuthModalOpen.value = false
   }
 
-  const openProjectDetailModal = (project: ProjectProps) => {
+  const setOpenProjectDetailModal = (project: ProjectProps) => {
     selectedProject.value = project
     isProjectDetailModalOpen.value = true
   }
 
-  const closeProjectDetailModal = () => {
+  const setCloseProjectDetailModal = () => {
     isProjectDetailModalOpen.value = false
     selectedProject.value = null
   }
 
-  const openFilterDropdown = () => {
+  const setOpenFilterDropdown = () => {
     isFilterDropdownOpen.value = !isFilterDropdownOpen.value
   }
 
-  const closeFilterDropdown = () => {
+  const setCloseFilterDropdown = () => {
     isFilterDropdownOpen.value = false
   }
 
   return {
-    // * STATES
+    // STATES
     isAuthModalOpen,
     isFilterDropdownOpen,
     isProjectDetailModalOpen,
     selectedProject,
-    // * SETTERS
-    openAuthModal,
-    closeAuthModal,
-    openProjectDetailModal,
-    closeProjectDetailModal,
-    openFilterDropdown,
-    closeFilterDropdown,
+    // SETTERS
+    setOpenAuthModal,
+    setCloseAuthModal,
+    setOpenProjectDetailModal,
+    setCloseProjectDetailModal,
+    setOpenFilterDropdown,
+    setCloseFilterDropdown,
   }
 })

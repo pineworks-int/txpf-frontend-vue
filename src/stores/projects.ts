@@ -1,26 +1,39 @@
-import type { ProjectProps } from '@/types/project.type'
+import type { ProjectProps, ProjectStaticData } from '@/types/project.type'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import staticData from '@/data/static.json'
+
+const { projects } = staticData as { projects: ProjectStaticData }
 
 export const useProjectsStore = defineStore('projects', () => {
   // ~-- STATES ---
-  const projects = ref<ProjectProps[]>([])
+  const projectsDynamicData = ref<ProjectProps[]>([])
+  const projectStaticData = ref<ProjectStaticData>(projects)
   const isLoading = ref(false)
   const error = ref<Error | null>(null)
   const selectedTechnologies = ref<string[]>([])
   const sortDirection = ref<'asc' | 'desc'>('asc')
 
   // ~-- GETTERS ---
-  const uniqueTechnologies = computed(() => {
-    const allTechs = projects.value.flatMap(project => project.technologies)
+  const getProjectStaticUrl = (projectId: string): string | null => {
+    return projects[projectId]?.url || null
+  }
+
+  const getProjectHasUrl = (projectId: string): boolean => {
+    return projects[projectId]?.url !== null
+  }
+
+  const getProjectsTechnologies = computed(() => {
+    const allTechs = projectsDynamicData.value.flatMap(project => project.technologies)
 
     return [...new Set(allTechs)].sort()
   })
-  
-  const filteredProjects = computed(() => {
-    const filtered = projects.value.filter(project => {
-      if (selectedTechnologies.value.length === 0) return true
-      return selectedTechnologies.value.every(tech => project.technologies.includes(tech))
+
+  const getFilteredProjects = computed(() => {
+    const filtered = projectsDynamicData.value.filter((p) => {
+      if (selectedTechnologies.value.length === 0)
+        return true
+      return selectedTechnologies.value.every(tech => p.technologies.includes(tech))
     })
 
     return filtered.sort((a, b) => {
@@ -29,49 +42,52 @@ export const useProjectsStore = defineStore('projects', () => {
 
       if (sortDirection.value === 'asc') {
         return titleA.localeCompare(titleB) // ? A-Z
-      } else {
+      }
+      else {
         return titleB.localeCompare(titleA) // ? Z-A
       }
     })
   })
 
   // ~-- SETTERS ---
-  function setProjects(newProjects: ProjectProps[]) {
-    projects.value = newProjects
+  const setProjects = (newProjects: ProjectProps[]) => {
+    projectsDynamicData.value = newProjects
   }
 
-  function setLoading(loadingState: boolean) {
+  const setLoading = (loadingState: boolean) => {
     isLoading.value = loadingState
   }
 
-  function setError(newError: Error | null) {
+  const setError = (newError: Error | null) => {
     error.value = newError
   }
 
-  function toggleSortDirection() {
+  const setSortDirection = () => {
     sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
   }
 
-  function clearFilters() {
+  const setClearFilters = () => {
     selectedTechnologies.value = []
   }
 
-
   return {
-    // * STATES
-    projects,
+    // STATES
+    projectsDynamicData,
+    projectStaticData,
     isLoading,
     error,
     selectedTechnologies,
     sortDirection,
-    // * GETTERS
-    filteredProjects,
-    uniqueTechnologies,
-    // * SETTERS
+    // GETTERS
+    getFilteredProjects,
+    getProjectsTechnologies,
+    getProjectStaticUrl,
+    getProjectHasUrl,
+    // SETTERS
     setProjects,
     setLoading,
     setError,
-    toggleSortDirection,
-    clearFilters,
+    setSortDirection,
+    setClearFilters,
   }
 })
