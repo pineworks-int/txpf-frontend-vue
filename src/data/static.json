@@ -1,10 +1,10 @@
 {
     "projects": {
-        "databaseProjectId1": {
+        "71a6a281-b332-4405-948d-684c4628f9d8": {
             "url": "mysubdomain1.nspace.link",
             "description": "This is a description of the project1"
         },
-        "databaseProjectId2": {
+        "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
             "url": "mysubdomain2.nspace.link",
             "description": "This is a description of the project2"
         },
