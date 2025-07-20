@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import useAuth from '../../composables/useAuth'
-import { useUiStore } from '../../stores/ui'
+import useAuth from '@/composables/useAuth'
+import { useProjectsStore } from '@/stores/projects'
+import { useToastStore } from '@/stores/toast'
+import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
+const projectsStore = useProjectsStore()
+const toastStore = useToastStore()
 const { logIn } = useAuth()
 const userEmail = ref('')
 const userPassword = ref('')
@@ -11,11 +15,24 @@ const userPassword = ref('')
 async function handleSubmit() {
   try {
     await logIn(userEmail.value, userPassword.value)
-    console.warn('[AuthModal] Login Success !')
+    toastStore.showSuccess('Login Success !')
+
+    uiStore.setCloseAuthModal()
+
+    if (uiStore.pendingProjectAppAccess) {
+      const project = projectsStore.projectsDynamicData.find(
+        p => p.id === uiStore.pendingProjectAppAccess,
+      )
+      if (project) {
+        uiStore.setOpenProjectDetailModal(project)
+      }
+      uiStore.setPendingProjectAppAccess(null)
+    }
+
     uiStore.setCloseAuthModal()
   }
-  catch (error) {
-    console.error('[AuthModal] Login Failure : ', error)
+  catch (err) {
+    toastStore.showError(`Login Failure : ${err}`)
   }
 }
 </script>
