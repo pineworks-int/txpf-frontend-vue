@@ -1,96 +1,128 @@
 {
-    "en": {
-        "hero": {
-            "title": "This is a title",
-            "subtitle": "This is a subtitle",
-            "greetings": {
-                "morning": {
-                    "mainUser": {
-                        "message": "Good morning T∋hx!"
-                    },
-                    "guestUser": {
-                        "message": "Good morning dear guest!"
-                    },
-                    "unknownUser": {
-                        "message": "Good morning fellow stranger!"
-                    }
-                },
-                "afternoon": {
-                    "mainUser": {
-                        "message": "Good afternoon T∋hx!"
-                    },
-                    "guestUser": {
-                        "message": "Good afternoon dear guest!"
-                    },
-                    "unknownUser": {
-                        "message": "Good afternoon fellow stranger!"
-                    }
-                },
-                "evening": {
-                    "mainUser": {
-                        "message": "Good evening T∋hx!"
-                    },
-                    "guestUser": {
-                        "message": "Good evening dear guest!"
-                    },
-                    "unknownUser": {
-                        "message": "Good evening fellow stranger!"
-                    }
-                }
-            }
+    "projects": {
+        "71a6a281-b332-4405-948d-684c4628f9d8": {
+            "url": "mysubdomain1.nspace.link",
+            "description": "This is a description of the project1"
         },
-        "navigation": [
-            {
-                "label": "Personal Projects",
-                "url": "#personal-projects"
-            }
-        ]
+        "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+            "url": "mysubdomain2.nspace.link",
+            "description": "This is a description of the project2"
+        },
+        "databaseProjectId3": {
+            "url": "mysubdomain3.nspace.link",
+            "description": "This is a description of the project3"
+        }
     },
-    "fr": {
-        "hero": {
-            "title": "Ceci est un titre",
-            "subtitle": "Ceci est un sous-titre",
-            "greetings": {
-                "morning": {
-                    "mainUser": {
-                        "message": "Bonjour, ..."
+    "social": {
+        "linkedin": "https://www.linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username"
+    },
+    "content": {
+        "en": {
+            "hero": {
+                "title": "This is a title",
+                "subtitle": "This is a subtitle",
+                "greetings": {
+                    "morning": {
+                        "mainUser": {
+                            "message": "Good morning T∋hx!"
+                        },
+                        "guestUser": {
+                            "message": "Good morning dear guest!"
+                        },
+                        "unknownUser": {
+                            "message": "Good morning fellow stranger!"
+                        }
                     },
-                    "guestUser": {
-                        "message": "Bonjour, ..."
+                    "afternoon": {
+                        "mainUser": {
+                            "message": "Good afternoon T∋hx!"
+                        },
+                        "guestUser": {
+                            "message": "Good afternoon dear guest!"
+                        },
+                        "unknownUser": {
+                            "message": "Good afternoon fellow stranger!"
+                        }
                     },
-                    "unknownUser": {
-                        "message": "Bonjour, ..."
-                    }
-                },
-                "afternoon": {
-                    "mainUser": {
-                        "message": "Bon après-midi, ..."
-                    },
-                    "guestUser": {
-                        "message": "Bon après-midi, ..."
-                    },
-                    "unknownUser": {
-                        "message": "Bon après-midi, ..."
-                    }
-                },
-                "evening": {
-                    "mainUser": {
-                        "message": "Bonsoir, ..."
-                    },
-                    "guestUser": {
-                        "message": "Bonsoir, ..."
-                    },
-                    "unknownUser": {
-                        "message": "Bonsoir, ..."
+                    "evening": {
+                        "mainUser": {
+                            "message": "Good evening T∋hx!"
+                        },
+                        "guestUser": {
+                            "message": "Good evening dear guest!"
+                        },
+                        "unknownUser": {
+                            "message": "Good evening fellow stranger!"
+                        }
                     }
                 }
+            },
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Personal Projects",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "About me",
+                        "url": "/about-me"
+                    }
+                ]
             }
         },
-        "navigation": [
-            {
-                "label": "Projets Personnels",
-                "url": "#personal-projects"
+        "fr": {
+            "hero": {
+                "title": "Ceci est un titre",
+                "subtitle": "Ceci est un sous-titre",
+                "greetings": {
+                    "morning": {
+                        "mainUser": {
+                            "message": "Bonjour, ..."
+                        },
+                        "guestUser": {
+                            "message": "Bonjour, ..."
+                        },
+                        "unknownUser": {
+                            "message": "Bonjour, ..."
+                        }
+                    },
+                    "afternoon": {
+                        "mainUser": {
+                            "message": "Bon après-midi, ..."
+                        },
+                        "guestUser": {
+                            "message": "Bon après-midi, ..."
+                        },
+                        "unknownUser": {
+                            "message": "Bon après-midi, ..."
+                        }
+                    },
+                    "evening": {
+                        "mainUser": {
+                            "message": "Bonsoir, ..."
+                        },
+                        "guestUser": {
+                            "message": "Bonsoir, ..."
+                        },
+                        "unknownUser": {
+                            "message": "Bonsoir, ..."
+                        }
+                    }
+                }
+            },
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Projets Personnels",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "À propos de moi",
+                        "url": "/about-me"
+                    }
+                ]
             }
-        ]
+        }
     }
 }

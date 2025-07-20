@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import HeroSection from '../components/layout/HeroSection.vue'
+import HeroSection from '@/components/layout/HeroSection.vue'
+import ProjectShowcase from '@/components/projects/ProjectShowcase.vue'
+import ProjectDetailModal from '@/components/projects/ProjectDetailModal.vue'
 </script>
 
 <template>
@@ -7,5 +9,6 @@ import HeroSection from '../components/layout/HeroSection.vue'
     <h1>Home Page</h1>
   </div>
   <HeroSection />
-  <!-- project section will go here later -->
+  <ProjectShowcase />
+  <ProjectDetailModal />
 </template>
