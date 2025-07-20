@@ -1,4 +1,5 @@
 export interface ProjectProps {
+  id: string
   title: string
   description: string
   technologies: string[]
@@ -6,6 +7,8 @@ export interface ProjectProps {
   demoUrl: string
   githubRepoUrl: string
   githubProjectUrl: string
+  videos?: ProjectVideo[]
+  screenshots?: ProjectScreenshot[]
 }
 
 export interface ProjectStaticData {
@@ -13,4 +16,17 @@ export interface ProjectStaticData {
     url: string
     description: string
   }
+}
+
+interface ProjectVideo {
+  id: string
+  title: string
+  url: string
+  thumbnail: string
+}
+
+interface ProjectScreenshot {
+  id: string
+  title: string
+  url: string
 }

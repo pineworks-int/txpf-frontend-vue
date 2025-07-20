@@ -15,11 +15,11 @@ export const useProjectsStore = defineStore('projects', () => {
   const sortDirection = ref<'asc' | 'desc'>('asc')
 
   // ~-- GETTERS ---
-  const getProjectStaticUrl = (projectId: string): string | null => {
+  const getProjectAppStaticUrl = (projectId: string): string | null => {
     return projects[projectId]?.url || null
   }
 
-  const getProjectHasUrl = (projectId: string): boolean => {
+  const getProjectHasAppUrl = (projectId: string): boolean => {
     return projects[projectId]?.url !== null
   }
 
@@ -81,8 +81,8 @@ export const useProjectsStore = defineStore('projects', () => {
     // GETTERS
     getFilteredProjects,
     getProjectsTechnologies,
-    getProjectStaticUrl,
-    getProjectHasUrl,
+    getProjectAppStaticUrl,
+    getProjectHasAppUrl,
     // SETTERS
     setProjects,
     setLoading,
