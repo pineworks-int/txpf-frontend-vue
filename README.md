@@ -153,7 +153,7 @@ CREATE TABLE experiences (
 - [x] Create project card components
 - [x] Implement project filtering/sorting
 - [x] Add project detail modal/page
-- [ ] Connect to authentication for demo access
+- [x] Connect to authentication for demo access
 
 #### Issue 2.3: About Section
 
