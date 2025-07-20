@@ -8,6 +8,7 @@ export const useUiStore = defineStore('ui', () => {
   const isFilterDropdownOpen = ref(false)
   const isProjectDetailModalOpen = ref(false)
   const selectedProject = ref<ProjectProps | null>(null)
+  const pendingProjectAppAccess = ref<string | null>(null)
 
   // ~-- SETTERS ---
   const setOpenAuthModal = () => {
@@ -28,6 +29,10 @@ export const useUiStore = defineStore('ui', () => {
     selectedProject.value = null
   }
 
+  const setPendingProjectAppAccess = (projectId: string | null) => {
+    pendingProjectAppAccess.value = projectId
+  }
+
   const setOpenFilterDropdown = () => {
     isFilterDropdownOpen.value = !isFilterDropdownOpen.value
   }
@@ -42,11 +47,13 @@ export const useUiStore = defineStore('ui', () => {
     isFilterDropdownOpen,
     isProjectDetailModalOpen,
     selectedProject,
+    pendingProjectAppAccess,
     // SETTERS
     setOpenAuthModal,
     setCloseAuthModal,
     setOpenProjectDetailModal,
     setCloseProjectDetailModal,
+    setPendingProjectAppAccess,
     setOpenFilterDropdown,
     setCloseFilterDropdown,
   }
