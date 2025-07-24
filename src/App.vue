@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import AuthModal from '@/components/auth/AuthModal.vue'
 import FooterSection from '@/components/layout/FooterSection.vue'
 import NavBar from '@/components/layout/NavBar.vue'
@@ -8,6 +8,8 @@ import ToastContainer from '@/components/ui/ToastContainer.vue'
 import useAuth from '@/composables/useAuth'
 
 const { listenForAuthState } = useAuth()
+const route = useRoute()
+const isAboutMePage = route.name === 'aboutMe'
 
 onMounted(() => {
   listenForAuthState()
@@ -15,13 +17,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <NavBar />
+  <NavBar v-if="!isAboutMePage" />
   <ToastContainer />
   <main>
     <RouterView />
   </main>
   <AuthModal />
-  <FooterSection />
+  <FooterSection v-if="!isAboutMePage" />
 </template>
 
 <style scoped>
