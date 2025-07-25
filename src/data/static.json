@@ -1,127 +1,238 @@
 {
-    "projects": {
-        "71a6a281-b332-4405-948d-684c4628f9d8": {
-            "url": "mysubdomain1.nspace.link",
-            "description": "This is a description of the project1"
-        },
-        "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
-            "url": "mysubdomain2.nspace.link",
-            "description": "This is a description of the project2"
-        },
-        "databaseProjectId3": {
-            "url": "mysubdomain3.nspace.link",
-            "description": "This is a description of the project3"
-        }
-    },
-    "social": {
-        "linkedin": "https://www.linkedin.com/in/your-profile",
-        "github": "https://github.com/your-username"
-    },
     "content": {
-        "en": {
-            "hero": {
-                "title": "This is a title",
-                "subtitle": "This is a subtitle",
-                "greetings": {
-                    "morning": {
-                        "mainUser": {
-                            "message": "Good morning T∋hx!"
-                        },
-                        "guestUser": {
-                            "message": "Good morning dear guest!"
-                        },
-                        "unknownUser": {
-                            "message": "Good morning fellow stranger!"
-                        }
-                    },
-                    "afternoon": {
-                        "mainUser": {
-                            "message": "Good afternoon T∋hx!"
-                        },
-                        "guestUser": {
-                            "message": "Good afternoon dear guest!"
-                        },
-                        "unknownUser": {
-                            "message": "Good afternoon fellow stranger!"
-                        }
-                    },
-                    "evening": {
-                        "mainUser": {
-                            "message": "Good evening T∋hx!"
-                        },
-                        "guestUser": {
-                            "message": "Good evening dear guest!"
-                        },
-                        "unknownUser": {
-                            "message": "Good evening fellow stranger!"
-                        }
-                    }
+        "about-me": {
+            "header": {
+                "en": {
+                    "name": "Name",
+                    "surname": "Surname",
+                    "age": "Age",
+                    "job": "Developer",
+                    "download": "Download Resume"
+                },
+                "fr": {
+                    "name": "Nom",
+                    "surname": "Prénom",
+                    "age": "Âge",
+                    "job": "Développeur",
+                    "download": "Télécharger le CV"
                 }
             },
+            "sidebar": {
+                "sections": {
+                    "en": {
+                        "contact": "Contact",
+                        "hardskills": "Hardskills",
+                        "softskills": "Softskills",
+                        "languages": "Languages",
+                        "hobbies": "Hobbies & Interests"
+                    },
+                    "fr": {
+                        "contact": "Contact",
+                        "hardskills": "Savoir-faire",
+                        "softskills": "Savoir-être",
+                        "languages": "Langues",
+                        "hobbies": "Centres d'intérêt"
+                    }
+                },
+                "hardskillsSubs": {
+                    "en": {
+                        "frontend": "Frontend",
+                        "backend": "Backend",
+                        "database": "Database",
+                        "tools": "Tools",
+                        "os": "Systems"
+                    },
+                    "fr": {
+                        "frontend": "Frontend",
+                        "backend": "Backend",
+                        "database": "Base de données",
+                        "tools": "Outils",
+                        "os": "Systèmes"
+                    }
+                },
+                "softskillsContent": {
+                    "en": {
+                        "strategic": "Strategic",
+                        "adaptable": "Adaptable",
+                        "optimiser": "Optimiser",
+                        "perfectionist": "Perfectionist",
+                        "communicative": "Communicative",
+                        "empathetic": "Empathetic",
+                        "persistent": "Persistent"
+                    },
+                    "fr": {
+                        "strategic": "Stratégique",
+                        "adaptable": "Agile",
+                        "optimiser": "Optimiseur",
+                        "perfectionist": "Perfectionniste",
+                        "communicative": "Communicatif",
+                        "empathetic": "Empathique",
+                        "persistent": "Persistant"
+                    }
+                },
+                "languagesContent": {
+                    "en": {
+                        "english": "English (C2/Pro)",
+                        "french": "French (Native)"
+                    },
+                    "fr": {
+                        "french": "Français (Natif)",
+                        "english": "Anglais (C2/Pro)"
+                    }
+                },
+                "hobbiesContent": {
+                    "en": {
+                        "guitar": "Guitar",
+                        "astro": "Astronomy",
+                        "scifi": "Sci-fi",
+                        "volley": "Volleyball",
+                        "sail": "Sailing",
+                        "glide": "Paragliding",
+                        "mountains": "Mountains",
+                        "open_source": "Open-source",
+                        "hardware": "Hardware",
+                        "code": "Coding"
+                    },
+                    "fr": {
+                        "guitar": "Guitare",
+                        "astro": "Astronomie",
+                        "scifi": "Science-fiction",
+                        "volley": "Volleyball",
+                        "sail": "Voile",
+                        "glide": "Parapente",
+                        "mountains": "Montagnes",
+                        "open_source": "Open-source",
+                        "hardware": "Matériel",
+                        "code": "Programmation"
+                    }
+                }
+            }
+        },
+        "home": {
             "nav": {
-                "uiLinks": [
-                    {
+                "en": {
+                    "projects": {
                         "label": "Personal Projects",
                         "url": "#personal-projects"
                     },
-                    {
+                    "about": {
                         "label": "About me",
                         "url": "/about-me"
                     }
-                ]
-            }
-        },
-        "fr": {
+                },
+                "fr": {
+                    "projects": {
+                        "label": "Projets Personnels",
+                        "url": "#personal-projects"
+                    },
+                    "about": {
+                        "label": "À propos de moi",
+                        "url": "/about-me"
+                    }
+                }
+            },
             "hero": {
-                "title": "Ceci est un titre",
-                "subtitle": "Ceci est un sous-titre",
-                "greetings": {
-                    "morning": {
-                        "mainUser": {
-                            "message": "Bonjour, ..."
+                "en": {
+                    "title": "This is a title",
+                    "subtitle": "This is a subtitle",
+                    "greetings": {
+                        "morning": {
+                            "mainUser": {
+                                "message": "Good morning T∋hx!"
+                            },
+                            "guestUser": {
+                                "message": "Good morning dear guest!"
+                            },
+                            "unknownUser": {
+                                "message": "Good morning fellow stranger!"
+                            }
                         },
-                        "guestUser": {
-                            "message": "Bonjour, ..."
+                        "afternoon": {
+                            "mainUser": {
+                                "message": "Good afternoon T∋hx!"
+                            },
+                            "guestUser": {
+                                "message": "Good afternoon dear guest!"
+                            },
+                            "unknownUser": {
+                                "message": "Good afternoon fellow stranger!"
+                            }
                         },
-                        "unknownUser": {
-                            "message": "Bonjour, ..."
+                        "evening": {
+                            "mainUser": {
+                                "message": "Good evening T∋hx!"
+                            },
+                            "guestUser": {
+                                "message": "Good evening dear guest!"
+                            },
+                            "unknownUser": {
+                                "message": "Good evening fellow stranger!"
+                            }
                         }
                     },
-                    "afternoon": {
-                        "mainUser": {
-                            "message": "Bon après-midi, ..."
-                        },
-                        "guestUser": {
-                            "message": "Bon après-midi, ..."
-                        },
-                        "unknownUser": {
-                            "message": "Bon après-midi, ..."
-                        }
-                    },
-                    "evening": {
-                        "mainUser": {
-                            "message": "Bonsoir, ..."
-                        },
-                        "guestUser": {
-                            "message": "Bonsoir, ..."
-                        },
-                        "unknownUser": {
-                            "message": "Bonsoir, ..."
+                    "fr": {
+                        "title": "Ceci est un titre",
+                        "subtitle": "Ceci est un sous-titre",
+                        "greetings": {
+                            "morning": {
+                                "mainUser": {
+                                    "message": "Bonjour, ..."
+                                },
+                                "guestUser": {
+                                    "message": "Bonjour, ..."
+                                },
+                                "unknownUser": {
+                                    "message": "Bonjour, ..."
+                                }
+                            },
+                            "afternoon": {
+                                "mainUser": {
+                                    "message": "Bon après-midi, ..."
+                                },
+                                "guestUser": {
+                                    "message": "Bon après-midi, ..."
+                                },
+                                "unknownUser": {
+                                    "message": "Bon après-midi, ..."
+                                }
+                            },
+                            "evening": {
+                                "mainUser": {
+                                    "message": "Bonsoir, ..."
+                                },
+                                "guestUser": {
+                                    "message": "Bonsoir, ..."
+                                },
+                                "unknownUser": {
+                                    "message": "Bonsoir, ..."
+                                }
+                            }
                         }
                     }
                 }
             },
-            "nav": {
-                "uiLinks": [
-                    {
-                        "label": "Projets Personnels",
-                        "url": "#personal-projects"
-                    },
-                    {
-                        "label": "À propos de moi",
-                        "url": "/about-me"
+            "projects-showcase": {
+                "71a6a281-b332-4405-948d-684c4628f9d8": {
+                    "url": "mysubdomain1.nspace.link",
+                    "description": {
+                        "en": "This is a description of the project1",
+                        "fr": "Ceci est une description du projet1"
                     }
-                ]
+                },
+                "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+                    "url": "mysubdomain2.nspace.link",
+                    "description": {
+                        "en": "This is a description of the project2",
+                        "fr": "Ceci est une description du projet2"
+                    }
+                },
+                "databaseProjectId3": {
+                    "url": "mysubdomain3.nspace.link",
+                    "description": {
+                        "en": "This is a description of the project3",
+                        "fr": "Ceci est une description du projet3"
+                    }
+                }
             }
         }
     }
