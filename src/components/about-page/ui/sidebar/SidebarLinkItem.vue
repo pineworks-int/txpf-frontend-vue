@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { getTechLogo } from '@/lib/tech-logos'
+import { getIcon } from '@/lib/icons'
 import { useToastStore } from '@/stores/toast'
 
 const props = defineProps<{
@@ -11,7 +11,7 @@ const props = defineProps<{
 }>()
 
 const copied = ref(false)
-const icon = computed(() => getTechLogo(props.iconKey))
+const icon = computed(() => getIcon(props.iconKey))
 const isExternalLink = computed(() => props.href?.startsWith('http'))
 
 const toastStore = useToastStore()
@@ -36,23 +36,38 @@ function handleCopyToClipboard() {
     :href="href"
     :target="isExternalLink ? '_blank' : undefined"
     :rel="isExternalLink ? 'noopener noreferrer' : undefined"
-    class="flex items-center space-x-3 cursor-pointer group transition-colors mb-2"
+    class="flex items-center space-x-3 cursor-pointer group transition-colors"
   >
-    <span class="text-lg text-gray-500" v-html="icon" />
-    <span class="text-md text-gray-700 group-hover:text-blue-500">{{ text }}</span>
+    <span
+      class="text-2xl filter grayscale group-hover:grayscale-0 transition duration-300 ease-in-out"
+      v-html="icon"
+    />
+    <span class="text-md text-gray-700 group-hover:text-blue-500">
+      {{ text }}
+    </span>
   </a>
 
   <button
     v-else-if="textToCopy"
-    class="flex items-center space-x-3 text-left w-full group transition-colors mb-2"
+    class="flex items-center space-x-3 text-left w-full group transition-colors"
     @click="handleCopyToClipboard"
   >
-    <span class="text-lg text-gray-500" v-html="icon" />
-    <span class="text-md text-gray-700 group-hover:text-blue-500">{{ text }}</span>
+    <span
+      class="text-xl filter grayscale group-hover:grayscale-0 transition duration-300 ease-in-out"
+      v-html="icon"
+    />
+    <span class="text-md text-gray-700 group-hover:text-blue-500">
+      {{ text }}
+    </span>
   </button>
 
-  <div v-else class="flex items-center space-x-3 mb-2 group">
-    <span class="text-lg text-gray-500" v-html="icon" />
-    <span class="text-md text-gray-700 group-hover:text-blue-500">{{ text }}</span>
+  <div v-else class="flex items-center space-x-3 group">
+    <span
+      class="text-xl filter grayscale group-hover:grayscale-0 transition duration-300 ease-in-out"
+      v-html="icon"
+    />
+    <span class="text-md text-gray-700 group-hover:text-blue-500">
+      {{ text }}
+    </span>
   </div>
 </template>

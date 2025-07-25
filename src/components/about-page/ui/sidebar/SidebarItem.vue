@@ -1,18 +1,27 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { getTechLogo } from '@/lib/tech-logos'
+import { getIcon } from '@/lib/icons'
 
 const props = defineProps<{
   iconKey: string
   text: string
 }>()
 
-const icon = computed(() => getTechLogo(props.iconKey))
+const icon = computed(() => getIcon(props.iconKey))
 </script>
 
 <template>
-  <div class="flex items-center space-x-3">
-    <span class="text-lg text-gray-500" v-html="icon" />
+  <div class="flex items-center space-x-3 ml-2 group">
+    <span
+      v-if="iconKey === 'fr_flag_c' || iconKey === 'en_flag_c'"
+      class="text-2xl"
+      v-html="icon"
+    />
+    <span
+      v-else
+      class="text-2xl filter grayscale group-hover:grayscale-0 transition duration-300 ease-in-out"
+      v-html="icon"
+    />
     <span class="text-md text-gray-700">{{ text }}</span>
   </div>
 </template>
