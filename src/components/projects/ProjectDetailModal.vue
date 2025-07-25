@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { SupabaseAuthService } from '@/lib/auth-service'
-import { getTechLogo as getTechLogoFromLib } from '@/lib/tech-logos'
+import { getIcon as getIconFromLib } from '@/lib/icons'
 import { useProjectsStore } from '@/stores/projects'
 import { useToastStore } from '@/stores/toast'
 import { useUiStore } from '@/stores/ui'
@@ -22,8 +22,8 @@ const hasProjectAppUrl = computed(() => {
   return projectsStore.getProjectHasAppUrl(selectedProject.value.id)
 })
 
-function getTechLogo(tech: string) {
-  return getTechLogoFromLib(tech)
+function getIcon(name: string) {
+  return getIconFromLib(name)
 }
 
 async function handleProjectAppAccess() {
@@ -161,9 +161,9 @@ async function handleProjectAppAccess() {
             >
               <!-- Logo area - 48px container -->
               <div class="w-12 h-12 flex items-center justify-center">
-                <div v-if="getTechLogo(tech)" class="w-12 h-12 flex items-center justify-center">
+                <div v-if="getIcon(tech)" class="w-12 h-12 flex items-center justify-center">
                   <!-- SVG logo - 48px with colors -->
-                  <div class="w-12 h-12" v-html="getTechLogo(tech)" />
+                  <div class="w-12 h-12" v-html="getIcon(tech)" />
                 </div>
                 <div v-else class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center">
                   <!-- Fallback: first letter -->

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import useAuth from '@/composables/useAuth'
 import { useAuthStore } from '@/stores/auth'
 import { useContentStore } from '@/stores/content'
@@ -11,7 +10,12 @@ const { logOut } = useAuth()
 const uiStore = useUiStore()
 const authStore = useAuthStore()
 const contentStore = useContentStore()
-const { getContent } = storeToRefs(contentStore)
+
+const currentLanguage = contentStore.currentLanguage
+
+const navLinks = computed(() => {
+  return contentStore.getContentText('home.nav')[currentLanguage]
+})
 
 function handleLogout() {
   logOut()
@@ -27,7 +31,7 @@ function handleLogout() {
 
     <!-- Desktop Menu -->
     <ul class="hidden md:flex items-center gap-4">
-      <li v-for="item in getContent.nav.uiLinks" :key="item.label">
+      <li v-for="item in navLinks" :key="item.label">
         <a :href="item.url" class="hover:text-blue-500">
           {{ item.label }}
         </a>
@@ -68,7 +72,7 @@ function handleLogout() {
     <!-- Mobile Menu -->
     <div v-if="isMenuOpen" class="absolute top-16 left-0 w-full bg-gray-100 md:hidden">
       <ul class="flex flex-col items-center gap-4 p-4">
-        <li v-for="item in getContent.nav.uiLinks" :key="item.label">
+        <li v-for="item in navLinks" :key="item.label">
           <a :href="item.url" class="hover:text-blue-500">
             {{ item.label }}
           </a>

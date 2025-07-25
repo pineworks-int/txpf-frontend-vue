@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useContentStore } from '@/stores/content'
 
 const authStore = useAuthStore()
 const contentStore = useContentStore()
-const { getContent } = storeToRefs(contentStore)
+
+const currentLanguage = contentStore.currentLanguage
+
+const heroContent = computed(() => {
+  return contentStore.getContentText('home.hero')[currentLanguage]
+})
 
 const timeOfDay = computed(() => {
   const hours = new Date().getHours()
@@ -34,15 +38,15 @@ const greetingMessage = computed(() => {
     return 'Loading...'
   }
 
-  return getContent.value.hero.greetings[timeOfDay.value][userType.value].message
+  return heroContent.value.greetings[timeOfDay.value][userType.value].message
 })
 </script>
 
 <template>
   <section class="hero-section">
     <div class="main-content">
-      <h1>{{ getContent.hero.title }}</h1>
-      <p>{{ getContent.hero.subtitle }}</p>
+      <h1>{{ heroContent.title }}</h1>
+      <p>{{ heroContent.subtitle }}</p>
     </div>
     <aside class="greeting-content">
       <!-- maybe RSS feed later -->
