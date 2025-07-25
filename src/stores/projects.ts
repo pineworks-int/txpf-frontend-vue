@@ -3,12 +3,12 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import staticData from '@/data/static.json'
 
-const { projects } = staticData as { projects: ProjectStaticData }
+const projectsStatic = staticData.content.home['projects-showcase'] as ProjectStaticData
 
 export const useProjectsStore = defineStore('projects', () => {
   // ~-- STATES ---
   const projectsDynamicData = ref<ProjectProps[]>([])
-  const projectStaticData = ref<ProjectStaticData>(projects)
+  const projectStaticData = ref<ProjectStaticData>(projectsStatic)
   const isLoading = ref(false)
   const error = ref<Error | null>(null)
   const selectedTechnologies = ref<string[]>([])
@@ -16,11 +16,11 @@ export const useProjectsStore = defineStore('projects', () => {
 
   // ~-- GETTERS ---
   const getProjectAppStaticUrl = (projectId: string): string | null => {
-    return projects[projectId]?.url || null
+    return projectsStatic[projectId]?.url || null
   }
 
   const getProjectHasAppUrl = (projectId: string): boolean => {
-    return projects[projectId]?.url !== null
+    return projectsStatic[projectId]?.url !== null
   }
 
   const getProjectsTechnologies = computed(() => {
