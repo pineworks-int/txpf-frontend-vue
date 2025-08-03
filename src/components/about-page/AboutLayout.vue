@@ -1,131 +1,145 @@
 <script setup lang="ts">
+import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 import AboutExperiences from '@/components/about-page/AboutExperiences.vue'
 import AboutFooter from '@/components/about-page/AboutFooter.vue'
 import AboutHeader from '@/components/about-page/AboutHeader.vue'
+import AboutPopover from '@/components/about-page/AboutPopover.vue'
 import AboutSidebar from '@/components/about-page/AboutSidebar.vue'
 import AboutTimeline from '@/components/about-page/AboutTimeline.vue'
+
+// ~ Popover Logic (Unchanged) ~
+type PopoverContent = 'contact' | 'hardskills' | 'softskills' | 'other'
+const isPopoverOpen = ref(false)
+const popoverContentKey = ref<PopoverContent | null>(null)
+const popoverTriggerElement = ref<HTMLElement | null>(null)
+function openPopover(contentKey: PopoverContent, event: MouseEvent) {
+  isPopoverOpen.value = true
+  popoverContentKey.value = contentKey
+  popoverTriggerElement.value = event.currentTarget as HTMLElement
+}
+function closePopover() {
+  isPopoverOpen.value = false
+  popoverContentKey.value = null
+  popoverTriggerElement.value = null
+}
+
+// ~ Timeline & Section Marker Logic ~
+const experiencesContainerRef = ref<HTMLElement | null>(null) // The clean measurement box
+const mainContentRef = ref<HTMLElement | null>(null) // The scrollable container
+const contentAreaRef = ref<HTMLElement | null>(null) // The padded area for hover checks
+const headerRef = ref<HTMLElement | null>(null) // The fixed header
+
+const dotPercentage = ref(0)
+const lastClientY = ref(0)
+const sectionMarkers = ref<{ id: string, name: string, startPercent: number, endPercent: number }[]>([])
+
+function updateSectionMarkers() {
+  if (!experiencesContainerRef.value)
+    return
+  const sections = experiencesContainerRef.value.querySelectorAll('section[id]')
+
+  const firstSection = sections[0] as HTMLElement
+  const paddingTop = firstSection.offsetTop
+
+  const totalHeight = experiencesContainerRef.value.offsetHeight - paddingTop
+
+  const markers = Array.from(sections).map((section) => {
+    const htmlSection = section as HTMLElement
+    const id = htmlSection.id
+    const name = id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+    const correctedOffsetTop = htmlSection.offsetTop - paddingTop
+    const correctedEnd = (htmlSection.offsetTop + htmlSection.offsetHeight) - paddingTop
+    const startPercent = correctedOffsetTop / totalHeight
+    const endPercent = correctedEnd / totalHeight
+
+    return { id, name, startPercent, endPercent }
+  })
+  sectionMarkers.value = markers
+}
+
+function updateDotPosition(currentY: number) {
+  if (!experiencesContainerRef.value)
+    return
+  const experiencesRect = experiencesContainerRef.value.getBoundingClientRect()
+  const totalHeight = experiencesContainerRef.value.offsetHeight
+  const relativeY = currentY - experiencesRect.top
+  const percentage = Math.max(0, Math.min(relativeY / totalHeight, 1))
+  dotPercentage.value = percentage
+}
+
+// These handlers are now scoped correctly.
+function handleMouseMove(event: MouseEvent) {
+  lastClientY.value = event.clientY
+  updateDotPosition(event.clientY)
+}
+
+function handleScroll() {
+  updateDotPosition(lastClientY.value)
+}
+
+onMounted(() => {
+  nextTick(updateSectionMarkers)
+  window.addEventListener('scroll', handleScroll)
+  if (contentAreaRef.value) {
+    contentAreaRef.value.addEventListener('mousemove', handleMouseMove)
+  }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  if (contentAreaRef.value) {
+    contentAreaRef.value.removeEventListener('mousemove', handleMouseMove)
+  }
+})
 </script>
 
 <template>
   <div class="w-full min-h-screen bg-gray-50">
-    <!-- ~ Header ~ -->
+    <!-- All fixed elements (Header, Sidebar, Timeline, Footer) remain outside the scrollable area. -->
     <div
-      class="
-        fixed
-        flex
-        items-start
-        left-0
-        right-0
-        top-0
-        h-16
-        z-30
-        md:h-24
-        lg:h-40
-        bg-purple-100
-        border border-purple-500
-      "
+      ref="headerRef"
+      class="fixed flex items-start left-0 right-0 top-0 h-16 md:h-24 lg:h-40 z-30 bg-purple-100 border border-purple-500"
     >
-      <AboutHeader />
+      <AboutHeader @open-popover="openPopover" />
     </div>
-
-    <!-- ~ Sidebar ~ -->
     <div
-      class="
-        hidden
-        fixed
-        left-0
-        top-40
-        bottom-0
-        z-20
-        lg:block
-        lg:w-72
-        bg-blue-100
-        border border-blue-500
-      "
+      class="hidden lg:block fixed left-0 top-40 bottom-0 lg:w-72 z-20 bg-blue-100 border border-blue-500"
     >
       <AboutSidebar />
     </div>
-
-    <!-- ~ Timeline ~ -->
-    <!-- * Mobile/Tablet -->
     <div
-      class="
-        block
-        fixed
-        left-0
-        top-16
-        bottom-16
-        w-12
-        z-10
-        md:top-24
-        lg:hidden
-        bg-red-100
-        border border-red-500
-      "
+      class="block lg:hidden fixed left-0 top-16 md:top-24 bottom-16 w-12 z-10 bg-red-100 border border-red-500"
     >
-      <AboutTimeline />
+      <AboutTimeline :dot-percentage="dotPercentage" :section-markers="sectionMarkers" />
     </div>
-    <!-- * Desktop -->
     <div
-      class="
-        hidden
-        fixed
-        top-40
-        bottom-0
-        w-16
-        z-10
-        lg:block
-        lg:left-72
-        bg-red-100
-        border border-red-500
-      "
+      class="hidden lg:block fixed lg:left-72 top-40 bottom-0 w-16 z-10 bg-red-100 border border-red-500"
     >
-      <AboutTimeline />
+      <AboutTimeline :dot-percentage="dotPercentage" :section-markers="sectionMarkers" />
     </div>
-
-    <!-- ~ Footer ~ -->
     <div
-      class="
-        block
-        fixed
-        left-0
-        right-0
-        bottom-0
-        h-16
-        z-30
-        lg:hidden
-        bg-yellow-100
-        border border-yellow-500
-      "
+      class="block lg:hidden fixed left-0 right-0 bottom-0 h-16 z-30 bg-yellow-100 border border-yellow-500"
     >
-      <AboutFooter />
+      <AboutFooter @open-popover="openPopover" />
     </div>
-
-    <!-- ~ Body ~ -->
+    <AboutPopover
+      :is-open="isPopoverOpen"
+      :content-key="popoverContentKey"
+      :trigger-element="popoverTriggerElement"
+      @close="closePopover"
+    />
     <div
-      class="
-        relative
-        overflow-y-auto
-        min-h-screen
-        pl-12
-        pt-16
-        pb-16
-        md:pl-12
-        md:pt-24
-        lg:pl-88
-        lg:pr-0
-        lg:pt-40
-        lg:pb-0
-        bg-green-100
-        border border-green-500
-      "
-      style="margin-left: 0; margin-right: 0;"
+      ref="mainContentRef"
+      class="relative overflow-y-auto min-h-screen bg-green-100 border border-green-500"
     >
-      <AboutExperiences />
+      <div ref="contentAreaRef" class="pl-12 lg:pl-88 pt-16 md:pt-24 lg:pt-40 pb-16 lg:pb-0">
+        <div ref="experiencesContainerRef">
+          <AboutExperiences />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<style lang="css" scoped>
-
+<style scoped>
 </style>
