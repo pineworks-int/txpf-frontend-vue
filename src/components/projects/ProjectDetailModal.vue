@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { SupabaseAuthService } from '@/lib/auth-service'
-import { getIcon as getIconFromLib } from '@/lib/icons'
+import { getIcon } from '@/lib/icons'
 import { useProjectsStore } from '@/stores/projects'
 import { useToastStore } from '@/stores/toast'
 import { useUiStore } from '@/stores/ui'
@@ -21,10 +21,6 @@ const hasProjectAppUrl = computed(() => {
     return false
   return projectsStore.getProjectHasAppUrl(selectedProject.value.id)
 })
-
-function getIcon(name: string) {
-  return getIconFromLib(name)
-}
 
 async function handleProjectAppAccess() {
   isAuthenticating.value = true
@@ -80,22 +76,20 @@ async function handleProjectAppAccess() {
         @click="setCloseProjectDetailModal"
       />
 
-      <!-- # modal content -->
+      <!-- ~ modal content -->
       <div
         v-if="selectedProject"
         class="relative bg-white rounded-lg shadow-xl w-7/8 h-7/8 p-8 overflow-y-auto"
       >
-        <!-- ~ close button -->
+        <!-- # close button -->
         <button
           class="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
           @click="setCloseProjectDetailModal"
         >
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <div class="h-6 w-6" v-html="getIcon('a_close')" />
         </button>
 
-        <!-- ~ project title and description -->
+        <!-- # project title and description -->
         <div class="mb-8">
           <h1 class="text-3xl font-bold mb-4">
             {{ selectedProject.title }}
@@ -105,7 +99,7 @@ async function handleProjectAppAccess() {
           </p>
         </div>
 
-        <!-- ~ media section -->
+        <!-- # media section -->
         <div class="mb-8">
           <h2 class="text-xl font-semibold mb-4">
             Screenshots & Videos
@@ -148,7 +142,7 @@ async function handleProjectAppAccess() {
           </div>
         </div>
 
-        <!-- ~ technologies section -->
+        <!-- # technologies section -->
         <div class="mb-8">
           <h2 class="text-xl font-semibold mb-4">
             Technologies
@@ -159,21 +153,20 @@ async function handleProjectAppAccess() {
               :key="tech"
               class="flex flex-col items-center gap-2"
             >
-              <!-- Logo area - 48px container -->
+              <!-- Logo area -->
               <div class="w-12 h-12 flex items-center justify-center">
                 <div v-if="getIcon(tech)" class="w-12 h-12 flex items-center justify-center">
-                  <!-- SVG logo - 48px with colors -->
                   <div class="w-12 h-12" v-html="getIcon(tech)" />
                 </div>
                 <div v-else class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center">
-                  <!-- Fallback: first letter -->
+                  <!-- ? Fallback: first letter -->
                   <span class="text-lg font-semibold text-gray-600">
                     {{ tech.charAt(0).toUpperCase() }}
                   </span>
                 </div>
               </div>
 
-              <!-- Always show the name -->
+              <!-- ? Always show the name -->
               <span class="text-xs text-gray-600 text-center max-w-16">
                 {{ tech }}
               </span>
@@ -181,7 +174,7 @@ async function handleProjectAppAccess() {
           </div>
         </div>
 
-        <!-- ~ github links section -->
+        <!-- # github links section -->
         <div class="mb-8">
           <h2 class="text-xl font-semibold mb-4">
             GitHub Links
@@ -214,7 +207,7 @@ async function handleProjectAppAccess() {
           </div>
         </div>
 
-        <!-- ~ demo access button -->
+        <!-- # demo access button -->
         <div v-if="hasProjectAppUrl">
           <div class="flex justify-center">
             <button
@@ -229,7 +222,7 @@ async function handleProjectAppAccess() {
           </div>
         </div>
 
-        <!-- ~ auth error message -->
+        <!-- # auth error message -->
         <div
           v-if="authError"
           class="text-red-600 text-sm"
