@@ -24,10 +24,9 @@ function closePopover() {
 }
 
 // ~ Timeline & Section Marker Logic ~
-const experiencesContainerRef = ref<HTMLElement | null>(null) // The clean measurement box
-const mainContentRef = ref<HTMLElement | null>(null) // The scrollable container
-const contentAreaRef = ref<HTMLElement | null>(null) // The padded area for hover checks
-const headerRef = ref<HTMLElement | null>(null) // The fixed header
+const experiencesContainerRef = ref<HTMLElement | null>(null)
+const mainContentRef = ref<HTMLElement | null>(null)
+const contentAreaRef = ref<HTMLElement | null>(null)
 
 const dotPercentage = ref(0)
 const lastClientY = ref(0)
@@ -38,19 +37,20 @@ function updateSectionMarkers() {
     return
   const sections = experiencesContainerRef.value.querySelectorAll('section[id]')
 
-  const firstSection = sections[0] as HTMLElement
-  const paddingTop = firstSection.offsetTop
+  const totalHeight = experiencesContainerRef.value.offsetHeight
 
-  const totalHeight = experiencesContainerRef.value.offsetHeight - paddingTop
+  const containerOffsetTop = experiencesContainerRef.value.offsetTop
 
   const markers = Array.from(sections).map((section) => {
     const htmlSection = section as HTMLElement
     const id = htmlSection.id
     const name = id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
-    const correctedOffsetTop = htmlSection.offsetTop - paddingTop
-    const correctedEnd = (htmlSection.offsetTop + htmlSection.offsetHeight) - paddingTop
-    const startPercent = correctedOffsetTop / totalHeight
-    const endPercent = correctedEnd / totalHeight
+
+    const relativeOffsetTop = htmlSection.offsetTop - containerOffsetTop
+    const relativeEnd = relativeOffsetTop + htmlSection.offsetHeight
+
+    const startPercent = relativeOffsetTop / totalHeight
+    const endPercent = relativeEnd / totalHeight
 
     return { id, name, startPercent, endPercent }
   })
@@ -60,10 +60,14 @@ function updateSectionMarkers() {
 function updateDotPosition(currentY: number) {
   if (!experiencesContainerRef.value)
     return
+
+  // Use experiencesContainerRef for both position AND height
   const experiencesRect = experiencesContainerRef.value.getBoundingClientRect()
   const totalHeight = experiencesContainerRef.value.offsetHeight
+
   const relativeY = currentY - experiencesRect.top
   const percentage = Math.max(0, Math.min(relativeY / totalHeight, 1))
+
   dotPercentage.value = percentage
 }
 
@@ -78,7 +82,9 @@ function handleScroll() {
 }
 
 onMounted(() => {
-  nextTick(updateSectionMarkers)
+  nextTick(() => {
+    updateSectionMarkers()
+  })
   window.addEventListener('scroll', handleScroll)
   if (contentAreaRef.value) {
     contentAreaRef.value.addEventListener('mousemove', handleMouseMove)
@@ -97,7 +103,6 @@ onUnmounted(() => {
   <div class="w-full min-h-screen bg-gray-50">
     <!-- All fixed elements (Header, Sidebar, Timeline, Footer) remain outside the scrollable area. -->
     <div
-      ref="headerRef"
       class="fixed flex items-start left-0 right-0 top-0 h-16 md:h-24 lg:h-40 z-30 bg-purple-100 border border-purple-500"
     >
       <AboutHeader @open-popover="openPopover" />
@@ -110,12 +115,18 @@ onUnmounted(() => {
     <div
       class="block lg:hidden fixed left-0 top-16 md:top-24 bottom-16 w-12 z-10 bg-red-100 border border-red-500"
     >
-      <AboutTimeline :dot-percentage="dotPercentage" :section-markers="sectionMarkers" />
+      <AboutTimeline
+        :dot-percentage="dotPercentage"
+        :section-markers="sectionMarkers"
+      />
     </div>
     <div
       class="hidden lg:block fixed lg:left-72 top-40 bottom-0 w-16 z-10 bg-red-100 border border-red-500"
     >
-      <AboutTimeline :dot-percentage="dotPercentage" :section-markers="sectionMarkers" />
+      <AboutTimeline
+        :dot-percentage="dotPercentage"
+        :section-markers="sectionMarkers"
+      />
     </div>
     <div
       class="block lg:hidden fixed left-0 right-0 bottom-0 h-16 z-30 bg-yellow-100 border border-yellow-500"
