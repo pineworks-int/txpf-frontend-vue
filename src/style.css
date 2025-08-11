@@ -1,5 +1,111 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: #00ff00; /* Matrix green - full intensity */
+  --color-primary-medium: #00cc00; /* ~80% saturation */
+  --color-primary-muted: #009900; /* ~60% saturation */
+  --color-primary-subtle: #006600; /* ~40% saturation */
+
+  --color-secondary: #00aa00; /* Soothed matrix green */
+
+  --color-surface-1: #2a2f2a; /* Lighter green-tinted grey */
+  --color-surface-2: #1a1f1a; /* Darker green-tinted grey */
+
+  --color-background: #000000; /* Absolute black */
+  --color-content: #f8f8f8; /* White-ish */
+
+  --color-error: #ff4444;
+  --color-warn: #ff8800;
+  --color-success: #22ff73;
+  --color-info: #44b4ff;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overscroll-behavior: none; /* modern browsers */
+}
+
+body {
+  overflow: hidden;
+}
+
+#app {
+  height: 100dvh;
+  overflow: auto; /* only scrollable area */
+  overscroll-behavior: contain; /* block bounce at edges */
+  -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
+}
+
+/* ------------------------------ */
+.focus-ring {
+  @apply focus-visible:outline-none
+          focus-visible:ring-2
+        focus-visible:ring-primary
+          focus-visible:ring-offset-2
+        focus-visible:ring-offset-surface-1;
+}
+.focus-ring-bg {
+  @apply focus-visible:ring-offset-background;
+}
+/* ------------------------------ */
+.btn {
+  @apply px-4 py-2 rounded transition disabled:opacity-60 disabled:cursor-not-allowed;
+}
+.btn-cta {
+  @apply bg-primary-medium text-background hover:bg-primary;
+}
+.btn-primary {
+  @apply bg-primary-muted text-content hover:bg-primary hover:text-black;
+}
+.btn-danger {
+  @apply bg-error text-content hover:bg-error/90;
+}
+.btn-secondary {
+  @apply bg-secondary text-content hover:bg-primary-muted;
+}
+.btn-ghost {
+  @apply inline-flex items-center rounded-full border
+        border-primary-subtle/40 bg-surface-2/40
+        px-2 py-1 text-content/80 hover:bg-surface-2/60;
+}
+/* ------------------------------ */
+.nav-link {
+  @apply text-content hover:text-primary;
+}
+/* ------------------------------ */
+.belt {
+  @apply w-full p-4 bg-surface-1;
+}
+/* ------------------------------ */
+.glow-primary-sm {
+  @apply drop-shadow-[0_0_8px_rgba(0,255,0,0.35)];
+}
+.glow-primary-md {
+  @apply drop-shadow-[0_0_10px_rgba(0,255,0,0.35)];
+}
+/* ------------------------------ */
+.panel-3d {
+  @apply absolute inset-0 grid place-items-center
+        bg-surface-2/50 backdrop-blur-[1px]
+        border-y border-primary-subtle/20 text-content/60;
+}
+/* ------------------------------ */
+.dropdown-panel {
+  @apply absolute z-10 bg-surface-1 text-content shadow-lg rounded-md mt-2 border border-surface-2;
+}
+.dropdown-row {
+  @apply flex items-center gap-2 px-2 py-2 rounded cursor-pointer
+        hover:bg-surface-2/60
+        focus-visible:bg-surface-2/70 outline-none
+        aria-selected:bg-surface-2/80;
+}
+/* ------------------------------ */
+.checkbox {
+  @apply h-4 w-4 rounded border-surface-2 accent-primary focus:ring-2 focus:ring-primary;
 }
