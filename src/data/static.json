@@ -20,8 +20,8 @@
     "content": {
         "en": {
             "hero": {
-                "title": "This is a title",
-                "subtitle": "This is a subtitle",
+                "title": "root@[$USER]:~#",
+                "subtitle": "A collection of 1s and 0s, arranged with purpose. For now.",
                 "greetings": {
                     "morning": {
                         "mainUser": {
@@ -73,7 +73,7 @@
         },
         "fr": {
             "hero": {
-                "title": "Ceci est un titre",
+                "title": "root@[$USER]:~#",
                 "subtitle": "Ceci est un sous-titre",
                 "greetings": {
                     "morning": {
