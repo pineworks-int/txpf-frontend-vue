@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .cursor
+.claude
 .vscode
-.env*
+.env

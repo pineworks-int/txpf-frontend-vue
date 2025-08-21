@@ -80,7 +80,7 @@ body {
 }
 /* ------------------------------ */
 .belt {
-  @apply w-full p-4 bg-surface-1;
+  @apply w-full pl-4 pr-4 bg-surface-1;
 }
 /* ------------------------------ */
 .glow-primary-sm {

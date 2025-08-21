@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "claude:mentor": "./.claude/scripts/claude-helper.sh mentor",
+    "claude:architect": "./.claude/scripts/claude-helper.sh architect",
+    "claude:exec": "./.claude/scripts/claude-helper.sh exec",
+    "claude:docs": "./.claude/scripts/claude-helper.sh docs",
+    "claude:help": "./.claude/scripts/claude-helper.sh"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.4",

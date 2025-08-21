@@ -31,6 +31,11 @@ const userType = computed(() => {
   }
 })
 
+const authStatus = computed(() => ({
+  text: authStore.isUserLoggedIn ? 'AUTHENTICATED' : 'UNAUTHENTICATED',
+  className: authStore.isUserLoggedIn ? 'text-cyan-400' : 'text-error',
+}))
+
 const greetingMessage = computed(() => {
   if (authStore.isUserLoading) {
     return 'Loading...'
@@ -46,7 +51,7 @@ const greetingMessage = computed(() => {
     <div class="md:hidden belt">
       <div class="grid grid-cols-2 items-start gap-2">
         <!-- => Left: Title / Subtitle -->
-        <div>
+        <div class="p-4">
           <h1 class="text-2xl font-semibold leading-tight tracking-tight text-content">
             {{ getContent.hero.title }}
           </h1>
@@ -57,6 +62,11 @@ const greetingMessage = computed(() => {
 
         <!-- => Right: Greeting -->
         <aside class="text-right">
+          <p class="text-[0.6rem] text-orange-500">
+            > NEURALINK_TERMINAL v6.4 | STATUS:
+            <span class="text-cyan-400">ONLINE</span> | USER:
+            <span :class="authStatus.className">{{ authStatus.text }}</span>
+          </p>
           <p
             class="inline-flex items-center justify-end w-full whitespace-nowrap text-md sm:text-xl
                   font-bold tracking-tight text-primary"
@@ -84,10 +94,10 @@ const greetingMessage = computed(() => {
 
           <!-- Belt overlay -->
           <div class="pointer-events-none absolute inset-x-0 top-0 z-10">
-            <div class="pointer-events-auto w-full px-4 pt-2 pb-4">
+            <div class="pointer-events-auto w-full">
               <div class="grid grid-cols-1 md:grid-cols-2 items-start gap-4">
                 <!-- Left: Title / Subtitle -->
-                <div>
+                <div class="py-4 px-2">
                   <h1 class="text-3xl lg:text-4xl font-semibold leading-tight tracking-tight text-content">
                     {{ getContent.hero.title }}
                   </h1>
@@ -97,7 +107,12 @@ const greetingMessage = computed(() => {
                 </div>
 
                 <!-- Right: Greeting -->
-                <aside class="text-right">
+                <aside class="text-right pr-4">
+                  <p class="text-[0.6rem] text-orange-500">
+                    > NEURALINK_TERMINAL v6.4 | STATUS:
+                    <span class="text-cyan-400">ONLINE</span> | USER:
+                    <span :class="authStatus.className">{{ authStatus.text }}</span>
+                  </p>
                   <p
                     class="inline-flex items-center justify-end w-full whitespace-nowrap md:text-2xl
                           lg:text-3xl font-extrabold tracking-tight text-primary"
@@ -119,7 +134,7 @@ const greetingMessage = computed(() => {
         <div class="belt">
           <div class="grid grid-cols-1 md:grid-cols-2 items-start gap-2">
             <!-- Left: Title / Subtitle -->
-            <div>
+            <div class="py-4">
               <h1 class="text-3xl lg:text-4xl font-semibold leading-tight tracking-tight text-content">
                 {{ getContent.hero.title }}
               </h1>
@@ -130,6 +145,11 @@ const greetingMessage = computed(() => {
 
             <!-- Right: Greeting -->
             <aside class="text-right">
+              <p class="text-[0.6rem] text-orange-500">
+                > NEURALINK_TERMINAL v6.4 | STATUS:
+                <span class="text-cyan-400">ONLINE</span> | USER:
+                <span :class="authStatus.className">{{ authStatus.text }}</span>
+              </p>
               <p
                 class="inline-flex items-center justify-end w-full whitespace-nowrap md:text-2xl lg:text-3xl
                 sm:text-4xl font-extrabold tracking-tight text-primary"
