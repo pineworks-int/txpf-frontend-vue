@@ -20,40 +20,58 @@
     "content": {
         "en": {
             "hero": {
-                "title": "root@[$USER]:~#",
+                "title": "[$USER]@MyPortfolio: ~#",
                 "subtitle": "A collection of 1s and 0s, arranged with purpose. For now.",
-                "greetings": {
-                    "morning": {
-                        "mainUser": {
-                            "message": "Good morning T∋hx!"
+                "greetingAnimation": {
+                    "timeStatus": {
+                        "morning": "STATUS: Hibernation cycle complete",
+                        "noon": "STATUS: System warms-up",
+                        "afternoon": "STATUS: System at peak load",
+                        "evening": "STATUS: Entering hibernation cycle..."
+                    },
+                    "loginStatus": {
+                        "loggedIn": {
+                            "part1": "-- User signature recognized--",
+                            "part2": "==> Root access granted"
                         },
-                        "guestUser": {
-                            "message": "Good morning dear guest!"
-                        },
-                        "unknownUser": {
-                            "message": "Good morning fellow stranger!"
+                        "notLoggedIn": {
+                            "part1": "-- User signature unknown --",
+                            "part2": "==> Please login to get full access"
                         }
                     },
-                    "afternoon": {
-                        "mainUser": {
-                            "message": "Good afternoon T∋hx!"
+                    "userGreeting": {
+                        "morning": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good morning."
+                            },
+                            "guest": {
+                                "line3": "Morning dear guest, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good morning, you're being monitored."
+                            }
                         },
-                        "guestUser": {
-                            "message": "Good afternoon dear guest!"
+                        "afternoon": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good afternoon."
+                            },
+                            "guest": {
+                                "line3": "Afternoon dear guest, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good afternoon, you're being monitored."
+                            }
                         },
-                        "unknownUser": {
-                            "message": "Good afternoon fellow stranger!"
-                        }
-                    },
-                    "evening": {
-                        "mainUser": {
-                            "message": "Good evening T∋hx!"
-                        },
-                        "guestUser": {
-                            "message": "Good evening dear guest!"
-                        },
-                        "unknownUser": {
-                            "message": "Good evening fellow stranger!"
+                        "evening": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good evening."
+                            },
+                            "guest": {
+                                "line3": "Evening dear guest, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good evening, you're being monitored."
+                            }
                         }
                     }
                 }
@@ -73,40 +91,58 @@
         },
         "fr": {
             "hero": {
-                "title": "root@[$USER]:~#",
-                "subtitle": "Ceci est un sous-titre",
-                "greetings": {
-                    "morning": {
-                        "mainUser": {
-                            "message": "Bonjour, ..."
+                "title": "[$USER]@MonPortfolio: ~#",
+                "subtitle": "Une suite de 0 et de 1, formant un tout cohérent. Pour l'instant.",
+                "greetingAnimation": {
+                    "timeStatus": {
+                        "morning": "STATUS: Hibernation cycle complete.",
+                        "noon": "STATUS: System warms-up",
+                        "afternoon": "STATUS: System at peak load",
+                        "evening": "STATUS: Entering hibernation cycle"
+                    },
+                    "loginStatus": {
+                        "loggedIn": {
+                            "part1": "> User signature recognized",
+                            "part2": "==> Root access granted"
                         },
-                        "guestUser": {
-                            "message": "Bonjour, ..."
-                        },
-                        "unknownUser": {
-                            "message": "Bonjour, ..."
+                        "notLoggedIn": {
+                            "part1": "> User signature unknown",
+                            "part2": "==> Please login to get full access"
                         }
                     },
-                    "afternoon": {
-                        "mainUser": {
-                            "message": "Bon après-midi, ..."
+                    "userGreeting": {
+                        "morning": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good morning."
+                            },
+                            "guest": {
+                                "line3": "Morning your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good morning, you're being monitored."
+                            }
                         },
-                        "guestUser": {
-                            "message": "Bon après-midi, ..."
+                        "afternoon": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good afternoon."
+                            },
+                            "guest": {
+                                "line3": "Afternoon your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good afternoon, you're being monitored."
+                            }
                         },
-                        "unknownUser": {
-                            "message": "Bon après-midi, ..."
-                        }
-                    },
-                    "evening": {
-                        "mainUser": {
-                            "message": "Bonsoir, ..."
-                        },
-                        "guestUser": {
-                            "message": "Bonsoir, ..."
-                        },
-                        "unknownUser": {
-                            "message": "Bonsoir, ..."
+                        "evening": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good evening."
+                            },
+                            "guest": {
+                                "line3": "Evening your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good evening, you're being monitored."
+                            }
                         }
                     }
                 }
