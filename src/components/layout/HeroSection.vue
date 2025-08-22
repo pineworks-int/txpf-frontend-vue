@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
+import { useGreetingAnimation } from '@/composables/useGreetingAnimation'
 import { useAuthStore } from '@/stores/auth'
 import { useContentStore } from '@/stores/content'
 import { useUiStore } from '@/stores/ui'
@@ -9,15 +10,6 @@ const ui = useUiStore()
 const authStore = useAuthStore()
 const contentStore = useContentStore()
 const { getContent } = storeToRefs(contentStore)
-
-const timeOfDay = computed(() => {
-  const hours = new Date().getHours()
-  if (hours < 12)
-    return 'morning'
-  if (hours < 18)
-    return 'afternoon'
-  return 'evening'
-})
 
 const userType = computed(() => {
   if (!authStore.user) {
@@ -36,12 +28,14 @@ const authStatus = computed(() => ({
   className: authStore.isUserLoggedIn ? 'text-cyan-400' : 'text-error',
 }))
 
-const greetingMessage = computed(() => {
-  if (authStore.isUserLoading) {
-    return 'Loading...'
-  }
+const { line1, line2, line3, restartWithNewData } = useGreetingAnimation(
+  authStore.isUserLoggedIn,
+  userType.value,
+)
 
-  return getContent.value.hero.greetings[timeOfDay.value][userType.value].message
+// Watch for changes and restart animation with new data
+watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType]) => {
+  restartWithNewData(newIsLoggedIn, newUserType)
 })
 </script>
 
@@ -61,18 +55,27 @@ const greetingMessage = computed(() => {
         </div>
 
         <!-- => Right: Greeting -->
-        <aside class="text-right">
-          <p class="text-[0.6rem] text-orange-500">
-            > NEURALINK_TERMINAL v6.4 | STATUS:
-            <span class="text-cyan-400">ONLINE</span> | USER:
-            <span :class="authStatus.className">{{ authStatus.text }}</span>
-          </p>
-          <p
-            class="inline-flex items-center justify-end w-full whitespace-nowrap text-md sm:text-xl
-                  font-bold tracking-tight text-primary"
-          >
-            <span class="glow-primary-sm">{{ greetingMessage }}</span>
-          </p>
+        <aside>
+          <div>
+            <div class="text-left">
+              <p class="text-[0.6rem] text-orange-500">
+                > NEURALINK_TERMINAL v6.4 | STATUS:
+                <span class="text-cyan-400">ONLINE</span> | USER:
+                <span :class="authStatus.className">{{ authStatus.text }}</span>
+              </p>
+            </div>
+            <div class="text-right pt-2">
+              <p class="text-sm font-mono text-primary whitespace-nowrap">
+                <span class="glow-primary-md">{{ line1 }}</span>
+              </p>
+              <p class="text-sm font-mono text-primary whitespace-nowrap">
+                <span class="glow-primary-md">{{ line2 }}</span>
+              </p>
+              <p class="pt-2 text-sm font-mono text-primary whitespace-nowrap">
+                <span class="glow-primary-md">{{ line3 }}</span>
+              </p>
+            </div>
+          </div>
         </aside>
       </div>
     </div>
@@ -107,20 +110,29 @@ const greetingMessage = computed(() => {
                 </div>
 
                 <!-- Right: Greeting -->
-                <aside class="text-right pr-4">
-                  <p class="text-[0.6rem] text-orange-500">
-                    > NEURALINK_TERMINAL v6.4 | STATUS:
-                    <span class="text-cyan-400">ONLINE</span> | USER:
-                    <span :class="authStatus.className">{{ authStatus.text }}</span>
-                  </p>
-                  <p
-                    class="inline-flex items-center justify-end w-full whitespace-nowrap md:text-2xl
-                          lg:text-3xl font-extrabold tracking-tight text-primary"
-                  >
-                    <span class="glow-primary-md">
-                      {{ greetingMessage }}
-                    </span>
-                  </p>
+                <aside>
+                  <div>
+                    <div class="text-left">
+                      <p class="text-[0.6rem] text-orange-500">
+                        > NEURALINK_TERMINAL v6.4 | STATUS:
+                        <span class="text-cyan-400">ONLINE</span> | USER:
+                        <span :class="authStatus.className">{{ authStatus.text }}</span>
+                      </p>
+                    </div>
+                    <div class="flex flex-col items-end pt-2">
+                      <div class="text-left">
+                        <p class="text-sm font-mono text-primary whitespace-nowrap text-left">
+                          <span class="glow-primary-md">{{ line1 }}</span>
+                        </p>
+                        <p class="text-sm font-mono text-primary whitespace-nowrap text-left">
+                          <span class="glow-primary-md">{{ line2 }}</span>
+                        </p>
+                        <p class="pt-2 text-sm font-mono text-primary whitespace-nowrap text-left">
+                          <span class="glow-primary-md">{{ line3 }}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </aside>
               </div>
             </div>
@@ -144,20 +156,29 @@ const greetingMessage = computed(() => {
             </div>
 
             <!-- Right: Greeting -->
-            <aside class="text-right">
-              <p class="text-[0.6rem] text-orange-500">
-                > NEURALINK_TERMINAL v6.4 | STATUS:
-                <span class="text-cyan-400">ONLINE</span> | USER:
-                <span :class="authStatus.className">{{ authStatus.text }}</span>
-              </p>
-              <p
-                class="inline-flex items-center justify-end w-full whitespace-nowrap md:text-2xl lg:text-3xl
-                sm:text-4xl font-extrabold tracking-tight text-primary"
-              >
-                <span class="glow-primary-md">
-                  {{ greetingMessage }}
-                </span>
-              </p>
+            <aside>
+              <div>
+                <div class="text-left">
+                  <p class="text-[0.6rem] text-orange-500">
+                    > NEURALINK_TERMINAL v6.4 | STATUS:
+                    <span class="text-cyan-400">ONLINE</span> | USER:
+                    <span :class="authStatus.className">{{ authStatus.text }}</span>
+                  </p>
+                </div>
+                <div class="flex flex-col items-end pt-2">
+                  <div class="text-left">
+                    <p class="text-sm font-mono text-primary whitespace-nowrap text-left">
+                      <span class="glow-primary-md">{{ line1 }}</span>
+                    </p>
+                    <p class="text-sm font-mono text-primary whitespace-nowrap text-left">
+                      <span class="glow-primary-md">{{ line2 }}</span>
+                    </p>
+                    <p class="pt-2 text-sm font-mono text-primary whitespace-nowrap text-left">
+                      <span class="glow-primary-md">{{ line3 }}</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </aside>
           </div>
         </div>
