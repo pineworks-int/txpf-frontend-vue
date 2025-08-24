@@ -45,15 +45,15 @@ onBeforeUnmount(() => {
 <template>
   <section id="personal-projects" class="py-12 bg-surface-1 text-content">
     <div class="text-center">
-      <h2 class="text-3xl font-bold text-primary-medium">
+      <h2 class="text-3xl font-bold font-oxanium text-primary-medium">
         My Personal Projects
       </h2>
     </div>
 
-    <div class="my-8 filter-container">
+    <div class="my-8 filter-container flex justify-center md:justify-start">
       <div class="relative inline-block">
         <button
-          class="btn btn-primary ml-2 focus-ring"
+          class="btn btn-primary ml-2 focus-ring font-oxanium"
           aria-haspopup="listbox"
           :aria-expanded="isFilterDropdownOpen"
           aria-controls="project-filter-dropdown"
@@ -63,13 +63,13 @@ onBeforeUnmount(() => {
         </button>
         <button
           v-if="selectedTechnologies.length > 0"
-          class="btn btn-danger ml-2 focus-ring"
+          class="btn btn-danger ml-2 focus-ring font-oxanium"
           @click="setClearFilters"
         >
           Clear
         </button>
         <button
-          class="btn btn-primary ml-2 focus-ring"
+          class="btn btn-primary ml-2 focus-ring font-oxanium"
           @click="setSortDirection"
         >
           Sort {{ sortDirection === 'asc' ? 'A-Z' : 'Z-A' }}
