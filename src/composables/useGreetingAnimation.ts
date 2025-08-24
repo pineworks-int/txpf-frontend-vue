@@ -8,8 +8,8 @@ export function useGreetingAnimation(initialIsLoggedIn: boolean, initialUserType
   const line2 = ref('')
   const line3 = ref('')
 
-  let animationInterval: NodeJS.Timeout | null = null
-  let cycleTimeout: NodeJS.Timeout | null = null
+  let animationId = 0
+  let currentAnimationId = 0
 
   // Time range logic
   const timeRange = computed(() => {
@@ -32,7 +32,7 @@ export function useGreetingAnimation(initialIsLoggedIn: boolean, initialUserType
     return 'evening'
   })
 
-  // Internal reactive state for user data
+  // State
   const isUserLoggedIn = ref(initialIsLoggedIn)
   const userType = ref(initialUserType)
 
@@ -60,149 +60,120 @@ export function useGreetingAnimation(initialIsLoggedIn: boolean, initialUserType
     }
   })
 
-  const typeText = (text: string, targetRef: any, speed: number = 30): Promise<void> => {
-    return new Promise((resolve) => {
-      let i = 0
-      targetRef.value = ''
+  // Typewriter with blinking cursor
+  const typeText = async (text: string, targetRef: any, speed: number, animId: number) => {
+    targetRef.value = ''
+    for (let i = 0; i <= text.length; i++) {
+      if (currentAnimationId !== animId)
+        return false
 
-      const type = () => {
-        if (i < text.length) {
-          targetRef.value += text.charAt(i)
-          i++
-          setTimeout(type, speed)
-        }
-        else {
-          resolve()
-        }
-      }
-      type()
-    })
+      const currentText = text.slice(0, i)
+      const showCursor = Math.floor(Date.now() / 300) % 2 === 0
+      targetRef.value = currentText + (showCursor ? '█' : ' ')
+
+      await new Promise(resolve => setTimeout(resolve, speed))
+      if (currentAnimationId !== animId)
+        return false
+    }
+    targetRef.value = text
+    return true
   }
 
-  const eraseText = (targetRef: any, speed: number = 20): Promise<void> => {
-    return new Promise((resolve) => {
-      const erase = () => {
-        if (targetRef.value.length > 0) {
-          targetRef.value = targetRef.value.slice(0, -1)
-          setTimeout(erase, speed)
-        }
-        else {
-          resolve()
-        }
-      }
-      erase()
-    })
+  const eraseText = async (targetRef: any, speed: number, animId: number) => {
+    const originalText = targetRef.value
+    for (let i = originalText.length; i >= 0; i--) {
+      if (currentAnimationId !== animId)
+        return false
+
+      const currentText = originalText.slice(0, i)
+      targetRef.value = currentText
+
+      await new Promise(resolve => setTimeout(resolve, speed))
+      if (currentAnimationId !== animId)
+        return false
+    }
+    targetRef.value = ''
+    return true
   }
 
-  const wait = (ms: number): Promise<void> => {
-    return new Promise(resolve => setTimeout(resolve, ms))
+  const wait = async (ms: number, animId: number) => {
+    await new Promise(resolve => setTimeout(resolve, ms))
+    return currentAnimationId === animId
   }
 
-  const eraseAll = (): Promise<void> => {
-    return Promise.all([
-      eraseText(line1, 30),
-      eraseText(line2, 30),
-      eraseText(line3, 30),
-    ]).then(() => {})
-  }
-
-  const isAnimationActive = ref(true)
-
-  const runCycle = async () => {
-    if (!isAnimationActive.value)
-      return
+  // Main animation cycle
+  const runAnimation = async () => {
+    const animId = ++animationId
+    currentAnimationId = animId
 
     const messages = currentMessages.value
 
-    try {
-      // Line1: Type first line and keep displayed
-      if (!isAnimationActive.value)
-        return
-      await typeText(messages.line1, line1)
-      if (!isAnimationActive.value)
-        return
-      await wait(500)
+    // Line 1: Type and keep
+    if (!(await typeText(messages.line1, line1, 30, animId)))
+      return
+    if (!(await wait(500, animId)))
+      return
 
-      // Line2: Type first part
-      if (!isAnimationActive.value)
-        return
-      await typeText(messages.line2a, line2)
-      if (!isAnimationActive.value)
-        return
-      await wait(1500)
+    // Line 2a: Type first part
+    if (!(await typeText(messages.line2a, line2, 30, animId)))
+      return
+    if (!(await wait(1500, animId)))
+      return
 
-      // Line2: Erase and type second part
-      if (!isAnimationActive.value)
-        return
-      await eraseText(line2)
-      if (!isAnimationActive.value)
-        return
-      await typeText(messages.line2b, line2)
-      if (!isAnimationActive.value)
-        return
-      await wait(500)
+    // Line 2b: Erase and type second part
+    if (!(await eraseText(line2, 20, animId)))
+      return
+    if (!(await typeText(messages.line2b, line2, 30, animId)))
+      return
+    if (!(await wait(500, animId)))
+      return
 
-      // Line3: Type third line
-      if (!isAnimationActive.value)
-        return
-      await typeText(messages.line3, line3)
-      if (!isAnimationActive.value)
-        return
-      await wait(10000)
+    // Line 3: Type third line
+    if (!(await typeText(messages.line3, line3, 30, animId)))
+      return
+    if (!(await wait(10000, animId)))
+      return
 
-      // Erase all
-      if (!isAnimationActive.value)
-        return
-      await eraseAll()
+    // Erase all
+    const erasePromises = [
+      eraseText(line1, 30, animId),
+      eraseText(line2, 30, animId),
+      eraseText(line3, 30, animId),
+    ]
 
-      // Repeat cycle
-      if (isAnimationActive.value) {
-        cycleTimeout = setTimeout(runCycle, 500)
-      }
-    }
-    catch (error) {
-      // Handle any errors during animation
-      console.warn('Greeting animation interrupted:', error)
+    const results = await Promise.all(erasePromises)
+    if (!results.every(result => result))
+      return
+
+    // Restart cycle
+    if (currentAnimationId === animId) {
+      setTimeout(() => {
+        if (currentAnimationId === animId) {
+          runAnimation()
+        }
+      }, 500)
     }
   }
 
   const startAnimation = () => {
-    isAnimationActive.value = true
-    runCycle()
-  }
-
-  const stopAnimation = () => {
-    isAnimationActive.value = false
-    if (animationInterval) {
-      clearInterval(animationInterval)
-      animationInterval = null
-    }
-    if (cycleTimeout) {
-      clearTimeout(cycleTimeout)
-      cycleTimeout = null
-    }
-  }
-
-  const restartWithNewData = (newIsLoggedIn: boolean, newUserType: 'mainUser' | 'guestUser' | 'unknownUser') => {
-    // Immediately stop the animation flag to prevent any ongoing async operations
-    isAnimationActive.value = false
-
-    // Stop and clear everything
-    stopAnimation()
-
-    // Update internal state
-    isUserLoggedIn.value = newIsLoggedIn
-    userType.value = newUserType
-
-    // Clear all lines immediately
     line1.value = ''
     line2.value = ''
     line3.value = ''
+    runAnimation()
+  }
 
-    // Wait for any ongoing async operations to complete, then start fresh
-    setTimeout(() => {
-      startAnimation()
-    }, 500)
+  const stopAnimation = () => {
+    currentAnimationId = ++animationId
+  }
+
+  const restartWithNewData = (newIsLoggedIn: boolean, newUserType: 'mainUser' | 'guestUser' | 'unknownUser') => {
+    stopAnimation()
+    isUserLoggedIn.value = newIsLoggedIn
+    userType.value = newUserType
+    line1.value = ''
+    line2.value = ''
+    line3.value = ''
+    startAnimation()
   }
 
   onMounted(() => {
