@@ -21,17 +21,17 @@
         "en": {
             "hero": {
                 "title": "[$USER]@MyPortfolio: ~#",
-                "subtitle": "A collection of 1s and 0s, arranged with purpose. For now.",
+                "subtitle": "A collection of 1s and 0s, arranged with purpose.\nFor now...",
                 "greetingAnimation": {
                     "timeStatus": {
                         "morning": "STATUS: Hibernation cycle complete",
                         "noon": "STATUS: System warms-up",
                         "afternoon": "STATUS: System at peak load",
-                        "evening": "STATUS: Entering hibernation cycle..."
+                        "evening": "STATUS: Entering hibernation cycle"
                     },
                     "loginStatus": {
                         "loggedIn": {
-                            "part1": "-- User signature recognized--",
+                            "part1": "-- User signature recognized --",
                             "part2": "==> Root access granted"
                         },
                         "notLoggedIn": {
