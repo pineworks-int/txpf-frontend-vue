@@ -30,34 +30,21 @@ function handleLogout() {
   >
     <!-- ~ Logo ~ -->
     <div>
-      <span class="text-xl font-bold text-content">LOGO</span>
+      LOGO
     </div>
 
     <!-- ~ Desktop Menu ~ -->
     <ul class="hidden md:flex items-center gap-4">
       <li v-for="item in getContent.nav.uiLinks" :key="item.label">
-        <a :href="item.url" class="nav-link focus-ring">
+        <a :href="item.url" class="nav-link-cyber focus-ring font-oxanium">
           {{ item.label }}
         </a>
       </li>
-      <li>
-        <router-link to="/about-me" class="nav-link focus-ring">
-          About Me
-        </router-link>
-      </li>
     </ul>
     <div class="hidden md:flex items-center gap-4">
-      <!-- Overlay toggle (desktop) -->
-      <button
-        class="btn btn-ghost text-xs focus-ring"
-        @click="uiStore.toggleHeroOverlayPreferred"
-      >
-        <span class="mr-1">Overlay</span>{{ uiStore.heroOverlayPreferred ? 'On' : 'Off' }}
-      </button>
-
       <button
         v-if="authStore.isUserLoggedIn"
-        class="btn btn-cta focus-ring"
+        class="btn btn-cta focus-ring font-oxanium"
         @click="handleLogout"
       >
         Log Out
@@ -72,15 +59,8 @@ function handleLogout() {
       <span v-if="authStore.isUserLoggedIn">AVATAR</span>
     </div>
 
-    <!-- ~ Mobile Controls (Overlay toggle + Menu Button) ~ -->
+    <!-- ~ Mobile Controls ~ -->
     <div class="md:hidden flex items-center gap-3">
-      <button
-        class="btn btn-ghost text-xs focus-ring"
-        @click="uiStore.toggleHeroOverlayPreferred"
-      >
-        <span class="mr-1">Overlay</span>{{ uiStore.heroOverlayPreferred ? 'On' : 'Off' }}
-      </button>
-
       <button
         class="text-content hover:text-primary"
         @click="isMenuOpen = !isMenuOpen"
@@ -130,14 +110,9 @@ function handleLogout() {
     <div v-if="isMenuOpen" class="absolute z-20 top-full left-0 w-full bg-surface-1 md:hidden">
       <ul class="flex flex-col items-center gap-4 p-4">
         <li v-for="item in getContent.nav.uiLinks" :key="item.label">
-          <a :href="item.url" class="nav-link focus-ring">
+          <a :href="item.url" class="nav-link-cyber focus-ring font-exo2">
             {{ item.label }}
           </a>
-        </li>
-        <li>
-          <router-link to="/about-me" class="nav-link focus-ring">
-            About Me
-          </router-link>
         </li>
         <li>
           <button
