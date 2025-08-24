@@ -10,8 +10,6 @@ export const useUiStore = defineStore('ui', () => {
   const selectedProject = ref<ProjectProps | null>(null)
   const pendingProjectAppAccess = ref<string | null>(null)
 
-  const heroOverlayPreferred = ref(false)
-
   // ~-- SETTERS ---
   const setOpenAuthModal = () => {
     isAuthModalOpen.value = true
@@ -43,10 +41,6 @@ export const useUiStore = defineStore('ui', () => {
     isFilterDropdownOpen.value = false
   }
 
-  const toggleHeroOverlayPreferred = () => {
-    heroOverlayPreferred.value = !heroOverlayPreferred.value
-  }
-
   return {
     // STATES
     isAuthModalOpen,
@@ -54,7 +48,6 @@ export const useUiStore = defineStore('ui', () => {
     isProjectDetailModalOpen,
     selectedProject,
     pendingProjectAppAccess,
-    heroOverlayPreferred,
     // SETTERS
     setOpenAuthModal,
     setCloseAuthModal,
@@ -63,6 +56,5 @@ export const useUiStore = defineStore('ui', () => {
     setPendingProjectAppAccess,
     setOpenFilterDropdown,
     setCloseFilterDropdown,
-    toggleHeroOverlayPreferred,
   }
 })
