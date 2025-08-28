@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import HeroSection from '@/components/layout/HeroSection.vue'
+import IntroSection from '@/components/layout/IntroSection.vue'
 import ProjectDetailModal from '@/components/projects/ProjectDetailModal.vue'
 import ProjectShowcase from '@/components/projects/ProjectShowcase.vue'
 </script>
 
 <template>
-  <HeroSection />
-  <ProjectShowcase />
-  <ProjectDetailModal />
+  <div class="bg-surface-1 min-h-screen">
+    <HeroSection />
+    <IntroSection />
+    <ProjectShowcase />
+    <ProjectDetailModal />
+  </div>
 </template>
 
 #00ff00
