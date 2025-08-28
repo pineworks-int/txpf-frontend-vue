@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
+import UserAvatar from '@/components/layout/UserAvatar.vue'
 import useAuth from '@/composables/useAuth'
 import { useAuthStore } from '@/stores/auth'
 import { useContentStore } from '@/stores/content'
@@ -14,6 +15,8 @@ const authStore = useAuthStore()
 const contentStore = useContentStore()
 const { getContent } = storeToRefs(contentStore)
 
+const { avatarRole } = useAuth()
+
 function handleLogout() {
   logOut()
 }
@@ -21,48 +24,55 @@ function handleLogout() {
 
 <template>
   <nav
-    class="relative bg-surface-2 border-t-1 border-primary p-4 flex items-center justify-between
-          before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-3
-          before:bg-[linear-gradient(to_bottom,rgba(0,255,0,0.5),transparent)]
-          before:opacity-90 before:animate-[pulse_3s_ease-in-out_infinite]
-          motion-reduce:before:animate-none
-          before:pointer-events-none before:z-10"
+    class="bg-surface-2 border-t-1 border-primary p-4 grid grid-cols-[1fr_auto_1fr]
+          items-center cyber-border"
   >
-    <!-- ~ Logo ~ -->
-    <div>
-      LOGO
+    <!-- ~ Left Cell: Logo ~ -->
+    <div class="justify-self-start">
+      <a href="/" class="focus-ring">
+        <img src="/tree-only.svg" alt="Tree Logo" class="w-10 h-8 md:h-12 -my-2">
+      </a>
     </div>
 
-    <!-- ~ Desktop Menu ~ -->
-    <ul class="hidden md:flex items-center gap-4">
-      <li v-for="item in getContent.nav.uiLinks" :key="item.label">
-        <a :href="item.url" class="nav-link-cyber focus-ring font-oxanium">
-          {{ item.label }}
-        </a>
-      </li>
-    </ul>
-    <div class="hidden md:flex items-center gap-4">
-      <button
-        v-if="authStore.isUserLoggedIn"
-        class="btn btn-cta focus-ring font-oxanium"
-        @click="handleLogout"
-      >
-        Log Out
-      </button>
-      <button
-        v-else
-        class="btn btn-cta focus-ring"
-        @click="uiStore.setOpenAuthModal"
-      >
-        Log In
-      </button>
-      <span v-if="authStore.isUserLoggedIn">AVATAR</span>
+    <!-- ~ Center Cell: Desktop Navigation ~ -->
+    <div class="justify-self-center">
+      <ul class="hidden md:flex items-center gap-4">
+        <li v-for="item in getContent.nav.uiLinks" :key="item.label">
+          <a :href="item.url" class="nav-link-cyber focus-ring font-oxanium">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <!-- ~ Mobile Controls ~ -->
-    <div class="md:hidden flex items-center gap-3">
+    <!-- ~ Right Cell: Auth + Mobile Menu ~ -->
+    <div class="justify-self-end flex items-center gap-3">
+      <!-- => Desktop Auth -->
+      <div class="hidden md:flex items-center gap-4">
+        <button
+          v-if="authStore.isUserLoggedIn"
+          class="btn btn-cta focus-ring font-oxanium"
+          @click="handleLogout"
+        >
+          Log Out
+        </button>
+        <button
+          v-else
+          class="btn btn-cta focus-ring"
+          @click="uiStore.setOpenAuthModal"
+        >
+          Log In
+        </button>
+        <UserAvatar
+          v-if="authStore.isUserLoggedIn"
+          :user-role="avatarRole"
+          size="md"
+        />
+      </div>
+
+      <!-- => Mobile Menu Button -->
       <button
-        class="text-content hover:text-primary"
+        class="md:hidden text-content hover:text-primary"
         @click="isMenuOpen = !isMenuOpen"
       >
         <svg width="24" height="24" viewBox="0 0 24 24">
