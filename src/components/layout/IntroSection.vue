@@ -51,7 +51,7 @@
             mais parce que <span class="font-bold">j'aime ça</span>. <br>
             <br>
             Je suis passionné par le web et j'y ai consacré l'entiereté de ma carrière, à peu de
-            choses prêt. <br>
+            choses près. <br>
             <br>
             Aujourd'hui, je travaille principalement avec <span class="font-bold">TypeScript</span>,
             <span class="font-bold">Vue.js/Nuxt</span>, <span class="font-bold">Tailwind CSS</span>,
