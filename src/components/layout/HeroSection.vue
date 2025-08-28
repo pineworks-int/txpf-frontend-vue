@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { computed, watch } from 'vue'
+import useAuth from '@/composables/useAuth'
 import { useGreetingAnimation } from '@/composables/useGreetingAnimation'
 import { useAuthStore } from '@/stores/auth'
 import { useContentStore } from '@/stores/content'
@@ -9,35 +10,16 @@ const authStore = useAuthStore()
 const contentStore = useContentStore()
 const { getContent } = storeToRefs(contentStore)
 
-const userType = computed(() => {
-  if (!authStore.user) {
-    return 'unknownUser'
-  }
-  else if (authStore.user.id === import.meta.env.VITE_SUPABASE_MAINUSER_ID) {
-    return 'mainUser'
-  }
-  else {
-    return 'guestUser'
-  }
-})
+const { userType, userDisplayName } = useAuth()
 
 const dynamicTitle = computed(() => {
   const baseTitle = getContent.value.hero.title
-  let userDisplayName = 'unknown'
-
-  if (userType.value === 'mainUser') {
-    userDisplayName = 'admin'
-  }
-  else if (userType.value === 'guestUser') {
-    userDisplayName = 'guest'
-  }
-
-  return baseTitle.replace('[$USER]', `${userDisplayName}`)
+  return baseTitle.replace('[$USER]', userDisplayName.value)
 })
 
 const authStatus = computed(() => ({
   text: authStore.isUserLoggedIn ? 'AUTHENTICATED' : 'UNAUTHENTICATED',
-  className: authStore.isUserLoggedIn ? 'text-cyan-400' : 'text-error',
+  className: authStore.isUserLoggedIn ? 'text-primary-medium' : 'text-error',
 }))
 
 const { line1, line2, line3, restartWithNewData } = useGreetingAnimation(
@@ -53,13 +35,28 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
 
 <template>
   <section class="bg-background text-content">
-    <div class="bg-surface-1 flex justify-center py-1 md:justify-end md:pr-4">
+    <!-- ~ Mobile Terminal Header ~ -->
+    <div class="md:hidden bg-surface-1 flex justify-center py-1">
       <p class="text-xs text-amber-600 font-rajdhani">
-        > NEURALINK_TERMINAL v6.4 | STATUS:
-        <span class="text-cyan-400">ONLINE</span> | USER:
+        > NEURALINK_TERMINAL v6.4 | USER:
         <span :class="authStatus.className">{{ authStatus.text }}</span>
       </p>
     </div>
+
+    <!-- ~ Desktop Terminal Header ~ -->
+    <div class="hidden md:block bg-surface-1 py-1 px-6">
+      <div class="grid" style="grid-template-columns: 1fr minmax(auto, 300px);">
+        <!-- Empty -->
+        <div />
+        <div class="text-left">
+          <p class="text-xs text-amber-600 font-rajdhani">
+            > NEURALINK_TERMINAL v6.4 | USER:
+            <span :class="authStatus.className">{{ authStatus.text }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- ~ Mobile ~ -->
     <div class="md:hidden belt">
       <div
@@ -103,8 +100,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
     <!-- ~ Desktop ~ -->
     <div class="hidden md:block">
       <div class="belt">
-        <!-- Updated grid with new column sizing -->
-        <div class="grid items-center gap-2" style="grid-template-columns: 1fr minmax(auto, 340px);">
+        <div class="grid items-center gap-2" style="grid-template-columns: 1fr minmax(auto, 300px);">
           <!-- => Left: Title / Subtitle -->
           <div class="">
             <h1 class="text-xl lg:text-2xl font-semibold leading-tight tracking-tight text-content font-oxanium">
@@ -115,19 +111,19 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
             </p>
           </div>
 
-          <!-- => Right: Greeting (with temporary border) -->
+          <!-- => Right: Greeting -->
           <aside class="h-20">
             <div>
               <div class="flex flex-col items-end">
                 <div class="text-left w-full">
-                  <p class="text-md font-oxanium text-primary whitespace-nowrap text-left">
-                    <span class="glow-primary-md" v-html="line1" />
+                  <p class="text-md font-oxanium text-content/80">
+                    <span v-html="line1" />
                   </p>
-                  <p class="text-md font-oxanium text-primary whitespace-nowrap text-left">
-                    <span class="glow-primary-md" v-html="line2" />
+                  <p class="text-md font-oxanium text-content/80">
+                    <span v-html="line2" />
                   </p>
-                  <p class="pt-2 text-md font-oxanium text-primary whitespace-nowrap text-left">
-                    <span class="glow-primary-md" v-html="line3" />
+                  <p class="pt-2 text-md font-oxanium text-content/80">
+                    <span v-html="line3" />
                   </p>
                 </div>
               </div>
