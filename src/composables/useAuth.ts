@@ -1,3 +1,4 @@
+import { computed } from 'vue'
 import supabase from '@/lib/supabase'
 import { useAuthStore } from '@/stores/auth'
 
@@ -38,5 +39,41 @@ export default function useAuth() {
     })
   }
 
-  return { logIn, logOut, listenForAuthState }
+  const userType = computed(() => {
+    if (!authStore.user) {
+      return 'unknownUser'
+    }
+    else if (authStore.user.id === import.meta.env.VITE_SUPABASE_MAINUSER_ID) {
+      return 'mainUser'
+    }
+    else {
+      return 'guestUser'
+    }
+  })
+
+  const userDisplayName = computed(() => {
+    switch (userType.value) {
+      case 'mainUser': return 'admin'
+      case 'guestUser': return 'guest'
+      case 'unknownUser': return 'unknown'
+      default: return 'unknown'
+    }
+  })
+
+  const avatarRole = computed(() => {
+    switch (userType.value) {
+      case 'mainUser': return 'admin'
+      case 'guestUser': return 'guest'
+      default: return null
+    }
+  })
+
+  return {
+    logIn,
+    logOut,
+    listenForAuthState,
+    userType,
+    userDisplayName,
+    avatarRole,
+  }
 }
