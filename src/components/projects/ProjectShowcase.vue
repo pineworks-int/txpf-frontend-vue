@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="personal-projects" class="py-12 bg-surface-1 text-content">
+  <section id="personal-projects" class="py-12 bg-surface-1 text-content max-w-4xl mx-auto">
     <div class="text-center">
       <h2 class="text-3xl font-bold font-oxanium text-primary-medium">
         My Personal Projects
