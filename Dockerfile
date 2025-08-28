@@ -1,19 +1,30 @@
 FROM node:18-alpine AS builder
 
+# Installation de pnpm
+RUN npm install -g pnpm
+
 WORKDIR /app
 
-# dépendances
+# Copie des fichiers de dépendances pnpm
 COPY package*.json ./
-RUN npm ci
+COPY pnpm-lock.yaml ./
 
+# Installation avec pnpm
+RUN pnpm install --frozen-lockfile
+
+# Copie du code source
 COPY . .
 
-RUN npm run build
+# Build de l'app
+RUN pnpm build
 
+# Production avec Nginx
 FROM nginx:alpine
 
+# Copie du build Vue.js
 COPY --from=builder /app/dist /usr/share/nginx/html
 
+# Configuration Nginx pour SPA
 COPY <<EOF /etc/nginx/conf.d/default.conf
 server {
     listen 80;

@@ -2,7 +2,7 @@ name: Build Vue.js Docker Image
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
     branches: [ main ]
 
@@ -16,6 +16,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    outputs:
+      image-tags: ${{ steps.meta.outputs.tags }}
 
     steps:
     - name: Checkout repository
@@ -56,5 +58,4 @@ jobs:
     steps:
     - name: Trigger deployment
       run: |
-        echo "Image built and pushed: ${{ steps.meta.outputs.tags }}"
-        # Cette image sera utilisée dans ton docker-compose.yml local
+        echo "Image built and pushed: ${{ needs.build-and-push.outputs.image-tags }}"
