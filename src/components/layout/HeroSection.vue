@@ -45,7 +45,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
 
     <!-- ~ Desktop Terminal Header ~ -->
     <div class="hidden md:block bg-surface-1 py-1 px-6">
-      <div class="grid" style="grid-template-columns: 1fr minmax(auto, 300px);">
+      <div class="grid" style="grid-template-columns: 1fr minmax(auto, 305px);">
         <!-- Empty -->
         <div />
         <div class="text-left">
@@ -60,10 +60,10 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
     <!-- ~ Mobile ~ -->
     <div class="md:hidden belt">
       <div
-        class="grid items-center gap-2" style="grid-template-columns: 1fr minmax(auto, 180px);"
+        class="grid items-center gap-10" style="grid-template-columns: 1fr minmax(auto, 180px);"
       >
         <!-- => Left: Title / Subtitle -->
-        <div class="">
+        <div class="pt-2">
           <h1 class="text-md sm:text-xl sm:font-oxanium leading-tight tracking-tight text-content font-rajdhani">
             {{ dynamicTitle }}
           </h1>
@@ -75,14 +75,14 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
         <!-- => Right: Greeting -->
         <aside class="h-18">
           <div>
-            <div class="text-left">
-              <p class="text-xs font-rajdhani text-primary">
+            <div class="text-left pt-2">
+              <p class="text-xs font-rajdhani text-content">
                 <span class="glow-primary-md" v-html="line1" />
               </p>
-              <p class="text-xs font-rajdhani text-primary">
+              <p class="text-xs font-rajdhani text-content">
                 <span class="glow-primary-md" v-html="line2" />
               </p>
-              <p class="pt-2 text-xs font-rajdhani text-primary">
+              <p class="pt-2 text-xs font-rajdhani text-content">
                 <span class="glow-primary-md" v-html="line3" />
               </p>
             </div>
@@ -100,7 +100,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
     <!-- ~ Desktop ~ -->
     <div class="hidden md:block">
       <div class="belt">
-        <div class="grid items-center gap-2" style="grid-template-columns: 1fr minmax(auto, 300px);">
+        <div class="grid items-center gap-2" style="grid-template-columns: 1fr minmax(auto, 310px);">
           <!-- => Left: Title / Subtitle -->
           <div class="">
             <h1 class="text-xl lg:text-2xl font-semibold leading-tight tracking-tight text-content font-oxanium">
