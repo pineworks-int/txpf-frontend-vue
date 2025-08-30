@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+docs
 *.local
 
 # Editor directories and files
@@ -23,5 +24,6 @@ dist-ssr
 *.sln
 *.sw?
 .cursor
+.claude
 .vscode
-.env*
+.env

@@ -2,28 +2,28 @@
 </script>
 
 <template>
-  <footer class="site-footer">
-    <div class="toggles">
-      <!-- placeholder for dark/light mode toggle -->
-      <button>Mode Toggle</button>
-      <!-- placeholder for language switch -->
-      <button>EN/FR</button>
-    </div>
-    <div class="links">
-      <!-- social or legal links here -->
-      <p>&copy; {{ new Date().getFullYear() }} T∋hx @ PineWorks Int. All Rights Reserved.</p>
+  <footer class="bg-surface-2 text-content">
+    <div
+      class="max-w-7xl mx-auto px-4 py-8
+            flex flex-col md:flex-row items-center justify-between gap-4"
+    >
+      <div class="flex items-center gap-3">
+        <button class="btn btn-secondary focus-ring text-xs" aria-label="Toggle color mode">
+          Mode Toggle
+        </button>
+        <button class="btn btn-secondary focus-ring text-xs" aria-label="Switch language">
+          EN/FR
+        </button>
+      </div>
+
+      <div class="text-center md:text-right">
+        <p class="text-content/70">
+          T∋hx @ PineWorks Int. - &copy; {{ new Date().getFullYear() }} All Rights Reserved.
+        </p>
+      </div>
     </div>
   </footer>
 </template>
 
 <style scoped>
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  background-color: #333;
-  /* temporary */
-  color: white;
-}
 </style>

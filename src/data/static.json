@@ -1,238 +1,163 @@
 {
-    "content": {
-        "about-me": {
-            "header": {
-                "en": {
-                    "name": "Name",
-                    "surname": "Surname",
-                    "age": "Age",
-                    "job": "Developer",
-                    "download": "Download Resume"
-                },
-                "fr": {
-                    "name": "Nom",
-                    "surname": "Prénom",
-                    "age": "Âge",
-                    "job": "Développeur",
-                    "download": "Télécharger le CV"
-                }
-            },
-            "sidebar": {
-                "sections": {
-                    "en": {
-                        "contact": "Contact",
-                        "hardskills": "Hardskills",
-                        "softskills": "Softskills",
-                        "languages": "Languages",
-                        "hobbies": "Hobbies & Interests"
-                    },
-                    "fr": {
-                        "contact": "Contact",
-                        "hardskills": "Savoir-faire",
-                        "softskills": "Savoir-être",
-                        "languages": "Langues",
-                        "hobbies": "Centres d'intérêt"
-                    }
-                },
-                "hardskillsSubs": {
-                    "en": {
-                        "frontend": "Frontend",
-                        "backend": "Backend",
-                        "database": "Database",
-                        "tools": "Tools",
-                        "os": "Systems"
-                    },
-                    "fr": {
-                        "frontend": "Frontend",
-                        "backend": "Backend",
-                        "database": "Base de données",
-                        "tools": "Outils",
-                        "os": "Systèmes"
-                    }
-                },
-                "softskillsContent": {
-                    "en": {
-                        "strategic": "Strategic",
-                        "adaptable": "Adaptable",
-                        "optimiser": "Optimiser",
-                        "perfectionist": "Perfectionist",
-                        "communicative": "Communicative",
-                        "empathetic": "Empathetic",
-                        "persistent": "Persistent"
-                    },
-                    "fr": {
-                        "strategic": "Stratégique",
-                        "adaptable": "Agile",
-                        "optimiser": "Optimiseur",
-                        "perfectionist": "Perfectionniste",
-                        "communicative": "Communicatif",
-                        "empathetic": "Empathique",
-                        "persistent": "Persistant"
-                    }
-                },
-                "languagesContent": {
-                    "en": {
-                        "english": "English (C2/Pro)",
-                        "french": "French (Native)"
-                    },
-                    "fr": {
-                        "french": "Français (Natif)",
-                        "english": "Anglais (C2/Pro)"
-                    }
-                },
-                "hobbiesContent": {
-                    "en": {
-                        "guitar": "Guitar",
-                        "astro": "Astronomy",
-                        "scifi": "Sci-fi",
-                        "volley": "Volleyball",
-                        "sail": "Sailing",
-                        "glide": "Paragliding",
-                        "mountains": "Mountains",
-                        "open_source": "Open-source",
-                        "hardware": "Hardware",
-                        "code": "Coding"
-                    },
-                    "fr": {
-                        "guitar": "Guitare",
-                        "astro": "Astronomie",
-                        "scifi": "Science-fiction",
-                        "volley": "Volleyball",
-                        "sail": "Voile",
-                        "glide": "Parapente",
-                        "mountains": "Montagnes",
-                        "open_source": "Open-source",
-                        "hardware": "Matériel",
-                        "code": "Programmation"
-                    }
-                }
-            }
+    "projects": {
+        "71a6a281-b332-4405-948d-684c4628f9d8": {
+            "url": "mysubdomain1.nspace.link",
+            "description": "This is a description of the project1"
         },
-        "home": {
-            "nav": {
-                "en": {
-                    "projects": {
-                        "label": "Personal Projects",
-                        "url": "#personal-projects"
-                    },
-                    "about": {
-                        "label": "About me",
-                        "url": "/about-me"
-                    }
-                },
-                "fr": {
-                    "projects": {
-                        "label": "Projets Personnels",
-                        "url": "#personal-projects"
-                    },
-                    "about": {
-                        "label": "À propos de moi",
-                        "url": "/about-me"
-                    }
-                }
-            },
+        "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+            "url": "mysubdomain2.nspace.link",
+            "description": "This is a description of the project2"
+        },
+        "databaseProjectId3": {
+            "url": "mysubdomain3.nspace.link",
+            "description": "This is a description of the project3"
+        }
+    },
+    "social": {
+        "linkedin": "https://www.linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username"
+    },
+    "content": {
+        "en": {
             "hero": {
-                "en": {
-                    "title": "This is a title",
-                    "subtitle": "This is a subtitle",
-                    "greetings": {
+                "title": "[$USER]@MyPortfolio: ~#",
+                "subtitle": "A collection of 1s and 0s, arranged with purpose.\nFor now...",
+                "greetingAnimation": {
+                    "timeStatus": {
+                        "morning": "STATUS: Hibernation cycle complete",
+                        "noon": "STATUS: System warms-up",
+                        "afternoon": "STATUS: System at peak load",
+                        "evening": "STATUS: Entering hibernation cycle"
+                    },
+                    "loginStatus": {
+                        "loggedIn": {
+                            "part1": "-- User signature recognized --",
+                            "part2": "==> Root access granted"
+                        },
+                        "notLoggedIn": {
+                            "part1": "-- User signature unknown --",
+                            "part2": "==> Please login to get full access"
+                        }
+                    },
+                    "userGreeting": {
                         "morning": {
-                            "mainUser": {
-                                "message": "Good morning T∋hx!"
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good morning."
                             },
-                            "guestUser": {
-                                "message": "Good morning dear guest!"
+                            "guest": {
+                                "line3": "Morning dear guest, please proceed."
                             },
-                            "unknownUser": {
-                                "message": "Good morning fellow stranger!"
+                            "unknown": {
+                                "line3": "Good morning, you're being monitored."
                             }
                         },
                         "afternoon": {
-                            "mainUser": {
-                                "message": "Good afternoon T∋hx!"
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good afternoon."
                             },
-                            "guestUser": {
-                                "message": "Good afternoon dear guest!"
+                            "guest": {
+                                "line3": "Afternoon dear guest, please proceed."
                             },
-                            "unknownUser": {
-                                "message": "Good afternoon fellow stranger!"
+                            "unknown": {
+                                "line3": "Good afternoon, you're being monitored."
                             }
                         },
                         "evening": {
-                            "mainUser": {
-                                "message": "Good evening T∋hx!"
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good evening."
                             },
-                            "guestUser": {
-                                "message": "Good evening dear guest!"
+                            "guest": {
+                                "line3": "Evening dear guest, please proceed."
                             },
-                            "unknownUser": {
-                                "message": "Good evening fellow stranger!"
-                            }
-                        }
-                    },
-                    "fr": {
-                        "title": "Ceci est un titre",
-                        "subtitle": "Ceci est un sous-titre",
-                        "greetings": {
-                            "morning": {
-                                "mainUser": {
-                                    "message": "Bonjour, ..."
-                                },
-                                "guestUser": {
-                                    "message": "Bonjour, ..."
-                                },
-                                "unknownUser": {
-                                    "message": "Bonjour, ..."
-                                }
-                            },
-                            "afternoon": {
-                                "mainUser": {
-                                    "message": "Bon après-midi, ..."
-                                },
-                                "guestUser": {
-                                    "message": "Bon après-midi, ..."
-                                },
-                                "unknownUser": {
-                                    "message": "Bon après-midi, ..."
-                                }
-                            },
-                            "evening": {
-                                "mainUser": {
-                                    "message": "Bonsoir, ..."
-                                },
-                                "guestUser": {
-                                    "message": "Bonsoir, ..."
-                                },
-                                "unknownUser": {
-                                    "message": "Bonsoir, ..."
-                                }
+                            "unknown": {
+                                "line3": "Good evening, you're being monitored."
                             }
                         }
                     }
                 }
             },
-            "projects-showcase": {
-                "71a6a281-b332-4405-948d-684c4628f9d8": {
-                    "url": "mysubdomain1.nspace.link",
-                    "description": {
-                        "en": "This is a description of the project1",
-                        "fr": "Ceci est une description du projet1"
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Personal Projects",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "About me",
+                        "url": "/about-me"
                     }
-                },
-                "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
-                    "url": "mysubdomain2.nspace.link",
-                    "description": {
-                        "en": "This is a description of the project2",
-                        "fr": "Ceci est une description du projet2"
-                    }
-                },
-                "databaseProjectId3": {
-                    "url": "mysubdomain3.nspace.link",
-                    "description": {
-                        "en": "This is a description of the project3",
-                        "fr": "Ceci est une description du projet3"
+                ]
+            }
+        },
+        "fr": {
+            "hero": {
+                "title": "[$USER]@MonPortfolio: ~#",
+                "subtitle": "Une suite de 0 et de 1, formant un tout cohérent. Pour l'instant.",
+                "greetingAnimation": {
+                    "timeStatus": {
+                        "morning": "STATUS: Hibernation cycle complete.",
+                        "noon": "STATUS: System warms-up",
+                        "afternoon": "STATUS: System at peak load",
+                        "evening": "STATUS: Entering hibernation cycle"
+                    },
+                    "loginStatus": {
+                        "loggedIn": {
+                            "part1": "> User signature recognized",
+                            "part2": "==> Root access granted"
+                        },
+                        "notLoggedIn": {
+                            "part1": "> User signature unknown",
+                            "part2": "==> Please login to get full access"
+                        }
+                    },
+                    "userGreeting": {
+                        "morning": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good morning."
+                            },
+                            "guest": {
+                                "line3": "Morning your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good morning, you're being monitored."
+                            }
+                        },
+                        "afternoon": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good afternoon."
+                            },
+                            "guest": {
+                                "line3": "Afternoon your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good afternoon, you're being monitored."
+                            }
+                        },
+                        "evening": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good evening."
+                            },
+                            "guest": {
+                                "line3": "Evening your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good evening, you're being monitored."
+                            }
+                        }
                     }
                 }
+            },
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Projets Personnels",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "À propos de moi",
+                        "url": "/about-me"
+                    }
+                ]
             }
         }
     }

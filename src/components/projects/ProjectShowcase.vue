@@ -43,53 +43,61 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="personal-projects" class="py-12">
+  <section id="personal-projects" class="py-12 bg-surface-1 text-content max-w-4xl mx-auto">
     <div class="text-center">
-      <h2 class="text-3xl font-bold">
+      <h2 class="text-3xl font-bold font-oxanium text-primary-medium">
         My Personal Projects
       </h2>
     </div>
 
-    <div class="my-8 filter-container">
+    <div class="my-8 filter-container flex justify-center md:justify-start">
       <div class="relative inline-block">
         <button
-          class="px-4 py-2 bg-blue-600 text-white rounded ml-2"
+          class="btn btn-primary ml-2 focus-ring font-oxanium"
+          aria-haspopup="listbox"
+          :aria-expanded="isFilterDropdownOpen"
+          aria-controls="project-filter-dropdown"
           @click="setOpenFilterDropdown"
         >
           Filters
         </button>
         <button
           v-if="selectedTechnologies.length > 0"
-          class="px-4 py-2 bg-red-600 text-white rounded ml-2"
+          class="btn btn-danger ml-2 focus-ring font-oxanium"
           @click="setClearFilters"
         >
           Clear
         </button>
         <button
-          class="px-4 py-2 bg-blue-600 text-white rounded ml-2"
+          class="btn btn-primary ml-2 focus-ring font-oxanium"
           @click="setSortDirection"
         >
           Sort {{ sortDirection === 'asc' ? 'A-Z' : 'Z-A' }}
         </button>
+
         <div
           v-if="isFilterDropdownOpen"
-          class="absolute z-10 bg-white shadow-lg rounded-md mt-2"
+          id="project-filter-dropdown"
+          class="dropdown-panel"
+          role="listbox"
         >
           <div
             v-for="tech in getProjectsTechnologies"
             :key="tech"
-            class="flex items-center ml-2"
+            class="dropdown-row"
+            role="option"
+            :aria-selected="selectedTechnologies.includes(tech)"
           >
             <input
               :id="`tech-${tech}`"
               v-model="selectedTechnologies"
               type="checkbox"
               :value="tech"
-              class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              class="checkbox"
             >
             <label
               :for="`tech-${tech}`"
-              class="ml-2 block text-sm text-gray-900"
+              class="block text-sm"
             >
               {{ tech }}
             </label>
@@ -100,19 +108,17 @@ onBeforeUnmount(() => {
 
     <div>
       <!-- if loading -->
-      <div
-        v-if="isLoading"
-        class="text-center"
-      >
-        <p>Loading projects...</p>
+      <div v-if="isLoading" class="text-center">
+        <p class="text-info">
+          Loading projects...
+        </p>
       </div>
+
       <!-- if error -->
-      <div
-        v-else-if="error"
-        class="text-center text-red-500"
-      >
+      <div v-else-if="error" class="text-center text-error">
         <p>Oops! Something went wrong: {{ error.message }}</p>
       </div>
+
       <!-- if success -->
       <div
         v-else-if="getFilteredProjects.length > 0"
@@ -124,12 +130,12 @@ onBeforeUnmount(() => {
           v-bind="project"
         />
       </div>
+
       <!-- if empty -->
-      <div
-        v-else
-        class="text-center mb-8"
-      >
-        <p>No projects found that match your filter.</p>
+      <div v-else class="text-center mb-8">
+        <p class="text-content/70">
+          No projects found that match your filter.
+        </p>
       </div>
     </div>
   </section>
