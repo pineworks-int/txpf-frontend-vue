@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { ProjectProps } from '@/types/project.type'
+import Icon from '@/components/ui/Icon.vue'
+import { icons } from '@/lib/icons'
 import { useUiStore } from '@/stores/ui'
 
 const props = defineProps<ProjectProps>()
@@ -31,7 +33,14 @@ function handleCardClick() {
             class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold
                   text-gray-700 mr-2 mb-2"
           >
-            {{ tech }}
+            <!-- Tech Icon -->
+            <Icon
+              v-if="icons[tech]"
+              :name="tech"
+              size="xs"
+            />
+            <!-- Tech Name -->
+            <span class="ml-1">{{ tech }}</span>
           </li>
         </ul>
       </div>
