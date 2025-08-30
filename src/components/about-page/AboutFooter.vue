@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { getIcon } from '@/lib/icons'
+import Icon from '@/components/ui/Icon.vue'
 
 type FooterPopoverContent = 'hardskills' | 'softskills' | 'other'
 
@@ -53,10 +53,11 @@ function openPopover(modalContent: string, event: MouseEvent) {
           "
           @click="openPopover(item.modalContent, $event)"
         >
-          <span
+          <!-- <span
             class="text-2xl"
             v-html="getIcon(item.iconKey)"
-          />
+          /> -->
+          <Icon :name="item.iconKey" size="lg" />
           <span>{{ item.label }}</span>
         </button>
       </div>
@@ -76,17 +77,14 @@ function openPopover(modalContent: string, event: MouseEvent) {
           "
           @click="openPopover(item.modalContent, $event)"
         >
-          <span
+          <!-- <span
             class="text-xl"
             v-html="getIcon(item.iconKey)"
-          />
+          /> -->
+          <Icon :name="item.iconKey" size="lg" />
           <span>{{ item.label }}</span>
         </button>
       </div>
     </div>
   </div>
 </template>
-
-<style lang="css" scoped>
-
-</style>
