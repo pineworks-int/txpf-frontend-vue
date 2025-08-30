@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { getIcon } from '@/lib/icons'
+import Icon from '@/components/ui/Icon.vue'
 
-const props = defineProps<{
+defineProps<{
   iconKey: string
   text: string
 }>()
-
-const icon = computed(() => getIcon(props.iconKey))
 </script>
 
 <template>
-  <div class="relative flex justify-center items-center p-2 border-1 border-neutral-400 rounded-md group">
+  <div
+    class="relative flex justify-center items-center p-2 border-1 border-neutral-400 rounded-md group"
+  >
     <span
       class="text-xl filter grayscale group-hover:grayscale-0 transition duration-300 ease-in-out"
-      v-html="icon"
-    />
+    >
+      <Icon :name="iconKey" size="lg" />
+    </span>
     <div
       class="
         absolute
