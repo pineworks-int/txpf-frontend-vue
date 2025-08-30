@@ -1,31 +1,38 @@
 import type { ProjectProps, ProjectStaticData } from '@/types/project.type'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import staticData from '@/data/static.json'
-
-const projectsStatic = staticData.content.home['projects-showcase'] as ProjectStaticData
+import { useContentStore } from '@/stores/content'
 
 export const useProjectsStore = defineStore('projects', () => {
   // ~-- STATES ---
   const projectsDynamicData = ref<ProjectProps[]>([])
-  const projectStaticData = ref<ProjectStaticData>(projectsStatic)
   const isLoading = ref(false)
   const error = ref<Error | null>(null)
   const selectedTechnologies = ref<string[]>([])
   const sortDirection = ref<'asc' | 'desc'>('asc')
 
+  // ~-- DEPENDENCIES ---
+  const contentStore = useContentStore()
+
   // ~-- GETTERS ---
+  const projectStaticData = computed((): ProjectStaticData => {
+    return contentStore.getContent?.projects || {}
+  })
+
   const getProjectAppStaticUrl = (projectId: string): string | null => {
-    return projectsStatic[projectId]?.url || null
+    return projectStaticData.value[projectId]?.url || null
   }
 
   const getProjectHasAppUrl = (projectId: string): boolean => {
-    return projectsStatic[projectId]?.url !== null
+    return projectStaticData.value[projectId]?.url !== null
+  }
+
+  const getProjectDescription = (projectId: string): string => {
+    return projectStaticData.value[projectId]?.description || ''
   }
 
   const getProjectsTechnologies = computed(() => {
     const allTechs = projectsDynamicData.value.flatMap(project => project.technologies)
-
     return [...new Set(allTechs)].sort()
   })
 
@@ -73,16 +80,17 @@ export const useProjectsStore = defineStore('projects', () => {
   return {
     // STATES
     projectsDynamicData,
-    projectStaticData,
     isLoading,
     error,
     selectedTechnologies,
     sortDirection,
     // GETTERS
+    projectStaticData,
     getFilteredProjects,
     getProjectsTechnologies,
     getProjectAppStaticUrl,
     getProjectHasAppUrl,
+    getProjectDescription,
     // SETTERS
     setProjects,
     setLoading,

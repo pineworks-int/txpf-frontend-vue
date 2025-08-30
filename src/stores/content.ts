@@ -1,28 +1,17 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import staticData from '@/data/static.json'
 
 const { content } = staticData
-
-function get(object: any, path: string) {
-  return path.split('.').reduce((acc, part) => acc && acc[part], object)
-}
 
 export const useContentStore = defineStore('content', () => {
   // ~-- STATES ---
   const currentLanguage = ref<'en' | 'fr'>('en')
 
   // ~-- GETTERS ---
-  const getContentText = (path: string) => {
-    const contentBlock = get(content, path)
-
-    if (!contentBlock) {
-      console.error(`Content block not found: ${path}`)
-      return { en: {}, fr: {} }
-    }
-
-    return contentBlock
-  }
+  const getContent = computed(() => {
+    return content[currentLanguage.value] || content.en
+  })
 
   // ~-- SETTERS ---
   const setLanguage = (language: 'en' | 'fr') => {
@@ -33,7 +22,7 @@ export const useContentStore = defineStore('content', () => {
     // STATES
     currentLanguage,
     // GETTERS
-    getContentText,
+    getContent,
     // SETTERS
     setLanguage,
   }

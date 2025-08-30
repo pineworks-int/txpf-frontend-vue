@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import SidebarIconRowItem from '@/components/about-page/ui/sidebar/SidebarIconRowItem.vue'
 import SidebarItem from '@/components/about-page/ui/sidebar/SidebarItem.vue'
@@ -8,18 +9,10 @@ import { getIcon } from '@/lib/icons'
 import { useContentStore } from '@/stores/content'
 
 const contentStore = useContentStore()
+const { getContent } = storeToRefs(contentStore)
 
 const sidebarContent = computed(() => {
-  const lang = contentStore.currentLanguage
-  const data = contentStore.getContentText('about-me.sidebar')
-
-  return {
-    sections: data.sections[lang],
-    hardskillsSubs: data.hardskillsSubs[lang],
-    softskillsContent: data.softskillsContent[lang],
-    languagesContent: data.languagesContent[lang],
-    hobbiesContent: data.hobbiesContent[lang],
-  }
+  return getContent.value['about-me']?.sidebar || {}
 })
 
 // ~-- Data Structures ---

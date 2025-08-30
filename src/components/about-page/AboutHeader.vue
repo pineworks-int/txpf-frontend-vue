@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import DownloadButton from '@/components/about-page/ui/header/DownloadButton.vue'
 import LanguageSwitch from '@/components/about-page/ui/header/LanguageSwitch.vue'
 import { getIcon } from '@/lib/icons'
@@ -10,10 +10,9 @@ const emit = defineEmits<{
 }>()
 
 const contentStore = useContentStore()
+const { getContent } = storeToRefs(contentStore)
 
-const header = computed(() => {
-  return contentStore.getContentText('about-me.header')[contentStore.currentLanguage]
-})
+const header = getContent.value['about-me'].header
 
 function handleProfileClick(event: MouseEvent) {
   emit('openPopover', 'contact', event)

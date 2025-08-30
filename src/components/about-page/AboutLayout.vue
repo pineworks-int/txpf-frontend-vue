@@ -7,7 +7,7 @@ import AboutPopover from '@/components/about-page/AboutPopover.vue'
 import AboutSidebar from '@/components/about-page/AboutSidebar.vue'
 import AboutTimeline from '@/components/about-page/AboutTimeline.vue'
 
-// ~ Popover Logic (Unchanged) ~
+// ~ Popover Logic ~
 type PopoverContent = 'contact' | 'hardskills' | 'softskills' | 'other'
 const isPopoverOpen = ref(false)
 const popoverContentKey = ref<PopoverContent | null>(null)

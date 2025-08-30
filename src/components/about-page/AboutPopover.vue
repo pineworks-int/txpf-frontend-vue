@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { computed, nextTick, ref, watch } from 'vue'
 import SidebarIconRowItem from '@/components/about-page/ui/sidebar/SidebarIconRowItem.vue'
 import SidebarItem from '@/components/about-page/ui/sidebar/SidebarItem.vue'
@@ -16,18 +17,11 @@ const props = defineProps<{
 const emit = defineEmits(['close'])
 
 const contentStore = useContentStore()
+const { getContent } = storeToRefs(contentStore)
 
 // ~-- Data Structures ---
 const sidebarContent = computed(() => {
-  const lang = contentStore.currentLanguage
-  const data = contentStore.getContentText('about-me.sidebar')
-  return {
-    sections: data.sections[lang],
-    hardskillsSubs: data.hardskillsSubs[lang],
-    softskillsContent: data.softskillsContent[lang],
-    languagesContent: data.languagesContent[lang],
-    hobbiesContent: data.hobbiesContent[lang],
-  }
+  return getContent.value['about-me']?.sidebar || {}
 })
 
 const contactInfo = [
@@ -114,11 +108,11 @@ const currentTitle = computed(() => {
     return ''
   switch (props.contentKey) {
     case 'contact':
-      return sidebarContent.value.sections.contact
+      return sidebarContent.value.sections?.contact || 'Contact'
     case 'hardskills':
-      return sidebarContent.value.sections.hardskills
+      return sidebarContent.value.sections?.hardskills || 'Hard Skills'
     case 'softskills':
-      return sidebarContent.value.sections.softskills
+      return sidebarContent.value.sections?.softskills || 'Soft Skills'
     case 'other':
       return 'Others'
     default:

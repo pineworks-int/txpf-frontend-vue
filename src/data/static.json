@@ -19,6 +19,18 @@
     },
     "content": {
         "en": {
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Personal Projects",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "About me",
+                        "url": "/about-me"
+                    }
+                ]
+            },
             "hero": {
                 "title": "[$USER]@MyPortfolio: ~#",
                 "subtitle": "A collection of 1s and 0s, arranged with purpose.\nFor now...",
@@ -76,20 +88,84 @@
                     }
                 }
             },
-            "nav": {
-                "uiLinks": [
-                    {
-                        "label": "Personal Projects",
-                        "url": "#personal-projects"
+            "projects": {
+                "71a6a281-b332-4405-948d-684c4628f9d8": {
+                    "url": "mysubdomain1.nspace.link",
+                    "description": "This is a description of the project1"
+                },
+                "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+                    "url": "mysubdomain2.nspace.link",
+                    "description": "This is a description of the project2"
+                },
+                "databaseProjectId3": {
+                    "url": "mysubdomain3.nspace.link",
+                    "description": "This is a description of the project3"
+                }
+            },
+            "about-me": {
+                "header": {
+                    "name": "Name",
+                    "surname": "Surname",
+                    "age": "Age",
+                    "job": "Developer",
+                    "download": "Download Resume"
+                },
+                "sidebar": {
+                    "sections": {
+                        "contact": "Contact",
+                        "hardskills": "Hardskills",
+                        "softskills": "Softskills",
+                        "languages": "Languages",
+                        "hobbies": "Hobbies & Interests"
                     },
-                    {
-                        "label": "About me",
-                        "url": "/about-me"
+                    "hardskillsSubs": {
+                        "frontend": "Frontend",
+                        "backend": "Backend",
+                        "database": "Database",
+                        "tools": "Tools",
+                        "os": "Systems"
+                    },
+                    "softskillsContent": {
+                        "strategic": "Strategic",
+                        "adaptable": "Adaptable",
+                        "optimiser": "Optimiser",
+                        "perfectionist": "Perfectionist",
+                        "communicative": "Communicative",
+                        "empathetic": "Empathetic",
+                        "persistent": "Persistent"
+                    },
+                    "languagesContent": {
+                        "english": "English (C2/Pro)",
+                        "french": "French (Native)"
+                    },
+                    "hobbiesContent": {
+                        "guitar": "Guitar",
+                        "astro": "Astronomy",
+                        "scifi": "Sci-fi",
+                        "volley": "Volleyball",
+                        "sail": "Sailing",
+                        "glide": "Paragliding",
+                        "mountains": "Mountains",
+                        "open_source": "Open-source",
+                        "hardware": "Hardware",
+                        "code": "Coding"
                     }
-                ]
+                }
             }
         },
         "fr": {
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Projets Personnels",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "À propos de moi",
+                        "url": "/about-me"
+                    }
+                ]
+            },
             "hero": {
                 "title": "[$USER]@MonPortfolio: ~#",
                 "subtitle": "Une suite de 0 et de 1, formant un tout cohérent. Pour l'instant.",
@@ -147,17 +223,69 @@
                     }
                 }
             },
-            "nav": {
-                "uiLinks": [
-                    {
-                        "label": "Projets Personnels",
-                        "url": "#personal-projects"
+            "projects": {
+                "71a6a281-b332-4405-948d-684c4628f9d8": {
+                    "url": "mysubdomain1.nspace.link",
+                    "description": "Ceci est une description du projet1"
+                },
+                "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+                    "url": "mysubdomain2.nspace.link",
+                    "description": "Ceci est une description du projet2"
+                },
+                "databaseProjectId3": {
+                    "url": "mysubdomain3.nspace.link",
+                    "description": "Ceci est une description du projet3"
+                }
+            },
+            "about-me": {
+                "header": {
+                    "name": "Nom",
+                    "surname": "Prénom",
+                    "age": "Âge",
+                    "job": "Développeur",
+                    "download": "Télécharger le CV"
+                },
+                "sidebar": {
+                    "sections": {
+                        "contact": "Contact",
+                        "hardskills": "Savoir-faire",
+                        "softskills": "Savoir-être",
+                        "languages": "Langues",
+                        "hobbies": "Centres d'intérêt"
                     },
-                    {
-                        "label": "À propos de moi",
-                        "url": "/about-me"
+                    "hardskillsSubs": {
+                        "frontend": "Frontend",
+                        "backend": "Backend",
+                        "database": "Base de données",
+                        "tools": "Outils",
+                        "os": "Systèmes"
+                    },
+                    "softskillsContent": {
+                        "strategic": "Stratégique",
+                        "adaptable": "Agile",
+                        "optimiser": "Optimiseur",
+                        "perfectionist": "Perfectionniste",
+                        "communicative": "Communicatif",
+                        "empathetic": "Empathique",
+                        "persistent": "Persistant"
+                    },
+                    "languagesContent": {
+                        "french": "Français (Natif)",
+                        "english": "Anglais (C2/Pro)"
+                    },
+                    "hobbiesContent": {
+                        "guitar": "Guitare",
+                        "astro": "Astronomie",
+                        "scifi": "Science-fiction",
+                        "volley": "Volleyball",
+                        "sail": "Voile",
+                        "glide": "Parapente",
+                        "mountains": "Montagnes",
+                        "open_source": "Open-source",
+                        "hardware": "Matériel",
+                        "code": "Programmation"
                     }
-                ]
+                }
             }
         }
     }
