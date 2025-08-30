@@ -14,7 +14,10 @@ export interface ProjectProps {
 export interface ProjectStaticData {
   [id: string]: {
     url: string
-    description: string
+    description: {
+      en: string
+      fr: string
+    }
   }
 }
 
