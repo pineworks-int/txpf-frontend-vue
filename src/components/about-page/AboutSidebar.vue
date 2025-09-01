@@ -5,7 +5,7 @@ import SidebarIconRowItem from '@/components/about-page/ui/sidebar/SidebarIconRo
 import SidebarItem from '@/components/about-page/ui/sidebar/SidebarItem.vue'
 import SidebarLinkItem from '@/components/about-page/ui/sidebar/SidebarLinkItem.vue'
 import SidebarSection from '@/components/about-page/ui/sidebar/SidebarSection.vue'
-import { getIcon } from '@/lib/icons'
+import Icon from '@/components/ui/Icon.vue'
 import { useContentStore } from '@/stores/content'
 
 const contentStore = useContentStore()
@@ -98,13 +98,6 @@ const hobbies = computed(() => [
 const sidebarContainer = ref<HTMLElement | null>(null)
 const isScrollable = ref(false)
 const isScrolledToBottom = ref(false)
-
-const downArrowIcon = computed(() => getIcon('a_arr_d'))
-const upArrowIcon = computed(() => getIcon('a_arr_u'))
-
-const currentIcon = computed(() => {
-  return isScrolledToBottom.value ? upArrowIcon.value : downArrowIcon.value
-})
 
 const currentAriaLabel = computed(() => {
   return isScrolledToBottom.value ? 'Scroll to top' : 'Scroll to bottom'
@@ -233,7 +226,10 @@ onUnmounted(() => {
       :aria-label="currentAriaLabel"
       @click="handleScrollBtnClick"
     >
-      <span v-html="currentIcon" />
+      <Icon
+        :name="isScrolledToBottom ? 'a_arr_u' : 'a_arr_d'"
+        size="md"
+      />
     </button>
   </div>
 </template>
