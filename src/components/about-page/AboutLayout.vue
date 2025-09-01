@@ -101,7 +101,6 @@ onUnmounted(() => {
 
 <template>
   <div class="w-full min-h-screen bg-gray-50">
-    <!-- All fixed elements (Header, Sidebar, Timeline, Footer) remain outside the scrollable area. -->
     <div
       class="fixed flex items-start left-0 right-0 top-0 h-16 md:h-24 lg:h-40 z-30 bg-purple-100 border border-purple-500"
     >

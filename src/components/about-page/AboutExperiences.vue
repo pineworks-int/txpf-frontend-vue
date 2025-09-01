@@ -13,7 +13,3 @@ import WorkExperiences from '@/components/about-page/experiences/WorkExperiences
     <EducationAndCerts />
   </div>
 </template>
-
-<style lang="css" scoped>
-
-</style>

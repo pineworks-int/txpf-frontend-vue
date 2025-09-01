@@ -30,7 +30,7 @@ function handleLogout() {
     <!-- ~ Left Cell: Logo ~ -->
     <div class="justify-self-start">
       <a href="/" class="focus-ring">
-        <img src="/tree-only.svg" alt="Tree Logo" class="w-10 h-8 md:h-12 -my-2">
+        <img src="/tree-only.svg" alt="Tree Logo" class="w-6 h-7 md:h-10 -my-2">
       </a>
     </div>
 

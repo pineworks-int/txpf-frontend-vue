@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
+import Icon from '@/components/ui/Icon.vue'
 import { SupabaseAuthService } from '@/lib/auth-service'
-import { getIcon } from '@/lib/icons'
+import { icons } from '@/lib/icons'
 import { useProjectsStore } from '@/stores/projects'
 import { useToastStore } from '@/stores/toast'
 import { useUiStore } from '@/stores/ui'
@@ -86,7 +87,8 @@ async function handleProjectAppAccess() {
           class="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
           @click="setCloseProjectDetailModal"
         >
-          <div class="h-6 w-6" v-html="getIcon('a_close')" />
+          <!-- <div class="h-6 w-6" v-html="getIcon('a_close')" /> -->
+          <Icon name="a_close" size="lg" />
         </button>
 
         <!-- # project title and description -->
@@ -153,11 +155,13 @@ async function handleProjectAppAccess() {
               :key="tech"
               class="flex flex-col items-center gap-2"
             >
-              <!-- Logo area -->
+              <!-- * Logo area -->
               <div class="w-12 h-12 flex items-center justify-center">
-                <div v-if="getIcon(tech)" class="w-12 h-12 flex items-center justify-center">
-                  <div class="w-12 h-12" v-html="getIcon(tech)" />
-                </div>
+                <Icon
+                  v-if="icons[tech]"
+                  :name="tech"
+                  size="3xl"
+                />
                 <div v-else class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center">
                   <!-- ? Fallback: first letter -->
                   <span class="text-lg font-semibold text-gray-600">

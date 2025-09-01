@@ -5,7 +5,7 @@ import SidebarIconRowItem from '@/components/about-page/ui/sidebar/SidebarIconRo
 import SidebarItem from '@/components/about-page/ui/sidebar/SidebarItem.vue'
 import SidebarLinkItem from '@/components/about-page/ui/sidebar/SidebarLinkItem.vue'
 import SidebarSection from '@/components/about-page/ui/sidebar/SidebarSection.vue'
-import { getIcon } from '@/lib/icons'
+import Icon from '@/components/ui/Icon.vue'
 import { useContentStore } from '@/stores/content'
 
 const props = defineProps<{
@@ -215,8 +215,9 @@ watch(() => props.isOpen, async (newValue) => {
                 class="rounded-full p-1 text-2xl text-gray-500 transition-colors hover:bg-gray-200 hover:text-gray-800"
                 aria-label="Close popover"
                 @click="emit('close')"
-                v-html="getIcon('a_close')"
-              />
+              >
+                <Icon name="a_close" size="lg" />
+              </button>
             </div>
 
             <!-- # Body -->
@@ -301,6 +302,3 @@ watch(() => props.isOpen, async (newValue) => {
     </Transition>
   </Teleport>
 </template>
-
-<style scoped>
-</style>

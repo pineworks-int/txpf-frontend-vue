@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 import DownloadButton from '@/components/about-page/ui/header/DownloadButton.vue'
 import LanguageSwitch from '@/components/about-page/ui/header/LanguageSwitch.vue'
-import { getIcon } from '@/lib/icons'
+import Icon from '@/components/ui/Icon.vue'
 import { useContentStore } from '@/stores/content'
 
 const emit = defineEmits<{
@@ -90,7 +90,7 @@ function handleProfileClick(event: MouseEvent) {
     </div>
 
     <!-- ~ Right: Buttons ~ -->
-    <div class="flex flex-col items-center justify-center h-full w-12 md:w-24 lg:w-18 xl:w-24">
+    <div class="flex flex-col items-center justify-center h-full w-12 md:w-28 lg:w-18 xl:w-24">
       <div class="flex flex-row items-center justify-center md:space-x-2 lg:flex-col lg:space-y-2 lg:space-x-0">
         <LanguageSwitch />
         <!-- => Desktop-only Download Button -->
@@ -101,13 +101,13 @@ function handleProfileClick(event: MouseEvent) {
     <!-- ~ Far Right: Icons in a row, text below ~ -->
     <div class="flex flex-col items-center justify-center h-full w-18 md:w-32 lg:w-44">
       <div class="flex flex-row justify-center space-x-1 md:space-x-2">
-        <span
-          class="text-2xl md:text-4xl lg:text-6xl"
-          v-html="getIcon('typescript')"
+        <Icon
+          name="typescript"
+          custom-class="w-6 h-6 md:w-12 md:h-12 lg:w-16 lg:h-16"
         />
-        <span
-          class="text-2xl md:text-4xl lg:text-6xl"
-          v-html="getIcon('javascript')"
+        <Icon
+          name="javascript"
+          custom-class="w-6 h-6 md:w-12 md:h-12 lg:w-16 lg:h-16"
         />
       </div>
       <p class="text-xs md:text-xl lg:text-2xl text-gray-500 text-center">

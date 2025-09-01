@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { getIcon } from '@/lib/icons'
-
 // Placeholder data for your education.
 const education = [
   {
@@ -78,16 +76,6 @@ const certifications = [
               <p class="text-md font-medium text-purple-700">
                 {{ cert.issuer }} - {{ cert.date }}
               </p>
-              <a
-                v-if="cert.credentialUrl"
-                :href="cert.credentialUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center text-sm text-blue-600 hover:underline"
-              >
-                View Credential
-                <span class="w-4 h-4 ml-1" v-html="getIcon('a_external_link')" />
-              </a>
             </div>
           </article>
         </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getIcon } from '@/lib/icons'
+import Icon from '@/components/ui/Icon.vue'
 
 const projects = [
   {
@@ -57,7 +57,7 @@ const projects = [
               :key="tech"
               class="flex items-center bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full"
             >
-              <span v-if="getIcon(tech)" class="w-4 h-4 mr-1.5" v-html="getIcon(tech)" />
+              <Icon :name="tech" size="xs" class="mr-1.5" />
               {{ tech }}
             </span>
           </div>
@@ -69,7 +69,7 @@ const projects = [
               rel="noopener noreferrer"
               class="flex items-center text-sm text-gray-500 hover:text-blue-600 transition-colors"
             >
-              <span class="w-5 h-5 mr-1" v-html="getIcon('github')" />
+              <Icon name="github" size="xs" class="mr-1.5" />
               GitHub
             </a>
             <a
@@ -78,7 +78,7 @@ const projects = [
               rel="noopener noreferrer"
               class="flex items-center text-sm text-gray-500 hover:text-blue-600 transition-colors"
             >
-              <span class="w-5 h-5 mr-1" v-html="getIcon('a_link')" />
+              <Icon name="a_link" size="xs" class="mr-1.5" />
               Live Demo
             </a>
           </footer>

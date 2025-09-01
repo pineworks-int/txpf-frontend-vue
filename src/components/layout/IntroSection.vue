@@ -45,13 +45,12 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div class="lg:col-span-2 space-y-4">
           <p class="text-content/90 leading-relaxed mb-4 text-base md:text-lg font-montserrat">
-            Je m'appelle Thibault, et je suis développeur web. <br>
+            Je m'appelle Thibault et je suis développeur web. <br>
             <br>
             Non pas par mode, ou par envie d'être en concurence avec des millions d'autres,
             mais parce que <span class="font-bold">j'aime ça</span>. <br>
             <br>
-            Je suis passionné par le web et j'y ai consacré l'entiereté de ma carrière, à peu de
-            choses près. <br>
+            Je suis passionné par le web et j'y ai pratiquement consacré l'entièreté de ma carrière<br>
             <br>
             Aujourd'hui, je travaille principalement avec <span class="font-bold">TypeScript</span>,
             <span class="font-bold">Vue.js/Nuxt</span>, <span class="font-bold">Tailwind CSS</span>,
