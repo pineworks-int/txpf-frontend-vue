@@ -45,7 +45,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
 
     <!-- ~ Desktop Terminal Header ~ -->
     <div class="hidden md:block bg-surface-1 py-1 px-6">
-      <div class="grid" style="grid-template-columns: 1fr minmax(auto, 305px);">
+      <div class="grid" style="grid-template-columns: 1fr minmax(auto, 310px);">
         <!-- Empty -->
         <div />
         <div class="text-left">
@@ -64,7 +64,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
       >
         <!-- => Left: Title / Subtitle -->
         <div class="pt-2">
-          <h1 class="text-md sm:text-xl sm:font-oxanium leading-tight tracking-tight text-content font-rajdhani">
+          <h1 class="font-rajdhani text-sm xs:text-base sm:text-xl sm:font-oxanium leading-tight tracking-tight text-content ">
             {{ dynamicTitle }}
           </h1>
           <p class="mt-1 text-xs text-primary-medium italic font-montserrat whitespace-pre-line">
@@ -100,7 +100,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
     <!-- ~ Desktop ~ -->
     <div class="hidden md:block">
       <div class="belt">
-        <div class="grid items-center gap-2" style="grid-template-columns: 1fr minmax(auto, 310px);">
+        <div class="grid items-center gap-2" style="grid-template-columns: 1fr minmax(auto, 320px);">
           <!-- => Left: Title / Subtitle -->
           <div class="">
             <h1 class="text-xl lg:text-2xl font-semibold leading-tight tracking-tight text-content font-oxanium">
