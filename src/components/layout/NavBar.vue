@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
+import AnimatedLogo from '@/components/layout/AnimatedLogo.vue'
 import UserAvatar from '@/components/layout/UserAvatar.vue'
 import useAuth from '@/composables/useAuth'
 import { useAuthStore } from '@/stores/auth'
@@ -30,7 +31,7 @@ function handleLogout() {
     <!-- ~ Left Cell: Logo ~ -->
     <div class="justify-self-start">
       <a href="/" class="focus-ring">
-        <img src="/tree-only.svg" alt="Tree Logo" class="w-6 h-7 md:h-10 -my-2">
+        <AnimatedLogo />
       </a>
     </div>
 
