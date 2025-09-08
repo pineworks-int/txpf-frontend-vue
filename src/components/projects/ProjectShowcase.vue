@@ -5,10 +5,12 @@ import ProjectCard from '@/components/projects/ProjectCard.vue'
 import { useProjects } from '@/composables/useProjects'
 import { useProjectsStore } from '@/stores/projects'
 import { useUiStore } from '@/stores/ui'
+import { useContentStore } from '@/stores/content'
 
 // ~ stores
 const projectsStore = useProjectsStore()
 const uiStore = useUiStore()
+const contentStore = useContentStore()
 
 const {
   isLoading,

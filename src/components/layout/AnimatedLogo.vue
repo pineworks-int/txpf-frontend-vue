@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
+
+const emit = defineEmits(['textVisibilityChange'])
 
 // Reactive state variables
 const isPageLoaded = ref(false)
@@ -23,10 +25,16 @@ const isPageLoadAnimation = computed(() => {
 // Event handlers
 function handleMouseEnter() {
   isHovered.value = true
+  if (hasInitialPlayed.value) {
+    emit('textVisibilityChange', true)
+  }
 }
 
 function handleMouseLeave() {
   isHovered.value = false
+  if (hasInitialPlayed.value) {
+    emit('textVisibilityChange', false)
+  }
 }
 
 // Handle animation start
@@ -48,6 +56,10 @@ function handleAnimationEnd(event: AnimationEvent) {
   }
 }
 
+watch(isTextDisplayed, (newValue) => {
+  emit('textVisibilityChange', newValue)
+})
+
 // Page load trigger
 onMounted(() => {
   setTimeout(() => {
@@ -58,7 +70,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="w-6 h-7 md:h-10 -my-2 flex items-center cursor-pointer"
+    class=" w-6 h-7 md:h-10 md:-my-2 flex items-center cursor-pointer"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
@@ -219,10 +231,10 @@ onMounted(() => {
     transform: rotate(0deg);
   }
   20% {
-    transform: rotate(-45deg);
+    transform: rotate(-30deg);
   }
   83% {
-    transform: rotate(-45deg);
+    transform: rotate(-30deg);
   }
   100% {
     transform: rotate(0deg);

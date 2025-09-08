@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import DownloadButton from '@/components/about-page/ui/header/DownloadButton.vue'
-import LanguageSwitch from '@/components/about-page/ui/header/LanguageSwitch.vue'
 import Icon from '@/components/ui/Icon.vue'
+import LanguageSwitch from '@/components/ui/LanguageSwitch.vue'
 import { useContentStore } from '@/stores/content'
 
 const emit = defineEmits<{
