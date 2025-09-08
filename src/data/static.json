@@ -100,6 +100,12 @@
                 }
             },
             "projects": {
+                "title": "Personal Projects",
+                "buttons": {
+                    "filters": "Filters",
+                    "clear": "Clear",
+                    "sort": "Sort"
+                },
                 "71a6a281-b332-4405-948d-684c4628f9d8": {
                     "url": "mysubdomain1.nspace.link",
                     "description": "This is a description of the project1"
@@ -246,6 +252,12 @@
                 }
             },
             "projects": {
+                "title": "Projets Personnels",
+                "buttons": {
+                    "filters": "Filtres",
+                    "clear": "Effacer",
+                    "sort": "Tri"
+                },
                 "71a6a281-b332-4405-948d-684c4628f9d8": {
                     "url": "mysubdomain1.nspace.link",
                     "description": "Ceci est une description du projet1"
