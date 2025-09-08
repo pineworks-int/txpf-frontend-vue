@@ -88,6 +88,17 @@
                     }
                 }
             },
+            "body": {
+                "intro": {
+                    "title": "What if we were to meet ?",
+                    "content": "In a world where computing technologies are developing at a breakneck pace, where artificial intelligence is gradually weaving itself into our daily routines, humanity's strength still lies in our capacity to meet one another, to forge connections and to exchange with fluidity.",
+                    "question": "\"... What if we were to meet ?\""
+                },
+                "presentation": {
+                    "title": "Hello, welcome, and delighted to meet you!",
+                    "content": "My name is Thibault, and I'm a web developer by passion — not following a trend or rushing to join the rat race.\nI chose this profession quite simply **because I love it**.\n\nThe web has fascinated me from the very beginning, and I've naturally devoted the better part of my career to it.\n\nToday, I work primarily with **TypeScript**, **Vue.js/Nuxt**, **Tailwind CSS**, and **PostgreSQL**.\n\nMy CV is available in the [\"About me\"](/about-me) section should you wish to learn more.\n\nKeep your chin up, and **let's stay in touch**!\n\nYours sincerely,\n**Thibault**"
+                }
+            },
             "projects": {
                 "71a6a281-b332-4405-948d-684c4628f9d8": {
                     "url": "mysubdomain1.nspace.link",
@@ -168,7 +179,7 @@
             },
             "hero": {
                 "title": "[$USER]@MonPortfolio: ~#",
-                "subtitle": "Une suite de 0 et de 1, formant un tout cohérent. Pour l'instant.",
+                "subtitle": "Une suite de 0 et de 1, formant un tout cohérent.\nPour l'instant...",
                 "greetingAnimation": {
                     "timeStatus": {
                         "morning": "STATUS: Hibernation cycle complete.",
@@ -221,6 +232,17 @@
                             }
                         }
                     }
+                }
+            },
+            "body": {
+                "intro": {
+                    "title": "Et si on se rencontrait ?",
+                    "content": "Dans un monde où les technologies informatiques se développent à un rythme effréné, où l'intelligence artificielle intègre progressivement nos routines quotidiennes, la force de l'Homme, elle, réside toujours dans notre capacité à nous rencontrer, à nouer des liens et à échanger de manière fluide.",
+                    "question": "\"... Et si on se rencontrait ?\""
+                },
+                "presentation": {
+                    "title": "Bonjour, Bienvenue, et Enchanté !",
+                    "content": "Je m'appelle Thibault et je suis développeur web par passion — et non par effet de mode ou pour rejoindre une course *effrénée* avec des millions d'autres.\nSi j'ai choisi ce métier, c'est tout simplement **parce que j'aime ça**.\n\nLe web me fascine depuis mes débuts, et j'y ai naturellement consacré l'essentiel de ma carrière.\n\nAujourd'hui, je travaille principalement avec **TypeScript**, **Vue.js/Nuxt**, **Tailwind CSS**, et **PostgreSQL**.\n\nMon CV est à votre disposition dans la section [\"À propos de moi\"](/about-me) si vous souhaitez en savoir plus.\n\nGardez la pêche, **gardons le contact** !\n\nBien à vous,\n**Thibault**"
                 }
             },
             "projects": {
