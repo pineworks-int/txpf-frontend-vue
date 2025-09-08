@@ -62,6 +62,11 @@
   --font-montserrat: 'Montserrat', sans-serif;
   --font-oxanium: 'Oxanium', sans-serif;
   --font-rajdhani: 'Rajdhani', sans-serif;
+
+  --breakpoint-xs: 475px;
+  --screens: {
+    xs: 475px;
+  };
 }
 
 html {
