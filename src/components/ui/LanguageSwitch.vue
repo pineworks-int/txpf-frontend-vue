@@ -15,10 +15,8 @@ function toggleLanguage() {
     class="
     flex
     items-center justify-center
-    rounded-md
-    px-2 py-1 md:px-3 md:py-1 lg:px-4 lg:py-2
-    bg-blue-500 hover:bg-blue-600
-    text-white
+    rounded-full
+    border-2 border-primary-medium
     transition-colors
     "
     aria-label="Toggle language"
@@ -28,16 +26,19 @@ function toggleLanguage() {
       <Icon
         v-if="contentStore.currentLanguage === 'en'"
         key="en"
-        name="en_flag_s"
-        custom-class="w-6 h-6 lg:w-8 lg:h-8"
+        name="en_flag_c"
+        custom-class="w-6 h-6"
       />
       <Icon
         v-else
         key="fr"
-        name="fr_flag_s"
-        custom-class="w-6 h-6 lg:w-8 lg:h-8"
+        name="fr_flag_c"
+        custom-class="w-6 h-6"
       />
     </transition>
+    <span class="mx-1 text-sm text-primary-medium">
+      {{ contentStore.currentLanguage === 'en' ? 'ENG' : 'FRA' }}
+    </span>
   </button>
 </template>
 
