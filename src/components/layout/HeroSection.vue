@@ -45,7 +45,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
 
     <!-- ~ Desktop Terminal Header ~ -->
     <div class="hidden md:block bg-surface-1 py-1 px-6">
-      <div class="grid" style="grid-template-columns: 1fr minmax(auto, 310px);">
+      <div class="grid" style="grid-template-columns: 1fr minmax(auto, 315px);">
         <!-- Empty -->
         <div />
         <div class="text-left">
@@ -60,14 +60,14 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
     <!-- ~ Mobile ~ -->
     <div class="md:hidden belt">
       <div
-        class="grid items-center gap-10" style="grid-template-columns: 1fr minmax(auto, 180px);"
+        class="grid items-center gap-5 xs:gap-15" style="grid-template-columns: 1fr minmax(auto, 180px);"
       >
         <!-- => Left: Title / Subtitle -->
         <div class="pt-2">
-          <h1 class="font-rajdhani text-sm xs:text-base sm:text-xl sm:font-oxanium leading-tight tracking-tight text-content ">
+          <h1 class="font-rajdhani text-sm xs:text-base sm:text-lg sm:font-oxanium leading-tight tracking-tight text-content">
             {{ dynamicTitle }}
           </h1>
-          <p class="mt-1 text-xs text-primary-medium italic font-montserrat whitespace-pre-line">
+          <p class="mt-1 text-[10px] xs:text-xs sm:text-sm text-primary-medium italic font-montserrat whitespace-pre-line">
             {{ getContent.hero.subtitle }}
           </p>
         </div>
@@ -106,7 +106,7 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
             <h1 class="text-xl lg:text-2xl font-semibold leading-tight tracking-tight text-content font-oxanium">
               {{ dynamicTitle }}
             </h1>
-            <p class="mt-1 text-md text-primary-medium italic font-montserrat font-extralight whitespace-pre-line">
+            <p class="mt-1 text-sm lg:text-base text-primary-medium italic font-montserrat font-extralight whitespace-pre-line">
               {{ getContent.hero.subtitle }}
             </p>
           </div>
@@ -116,13 +116,13 @@ watch([() => authStore.isUserLoggedIn, userType], ([newIsLoggedIn, newUserType])
             <div>
               <div class="flex flex-col items-end">
                 <div class="text-left w-full">
-                  <p class="text-md font-oxanium text-content/80">
+                  <p class="text-base font-oxanium text-content/80">
                     <span v-html="line1" />
                   </p>
-                  <p class="text-md font-oxanium text-content/80">
+                  <p class="text-base font-oxanium text-content/80">
                     <span v-html="line2" />
                   </p>
-                  <p class="pt-2 text-md font-oxanium text-content/80">
+                  <p class="pt-2 text-base font-oxanium text-content/80">
                     <span v-html="line3" />
                   </p>
                 </div>

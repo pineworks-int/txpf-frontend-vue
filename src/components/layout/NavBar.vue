@@ -3,12 +3,14 @@ import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import AnimatedLogo from '@/components/layout/AnimatedLogo.vue'
 import UserAvatar from '@/components/layout/UserAvatar.vue'
+import LanguageSwitch from '@/components/ui/LanguageSwitch.vue'
 import useAuth from '@/composables/useAuth'
 import { useAuthStore } from '@/stores/auth'
 import { useContentStore } from '@/stores/content'
 import { useUiStore } from '@/stores/ui'
 
 const isMenuOpen = ref(false)
+const isLogoTextVisible = ref(false)
 
 const { logOut } = useAuth()
 const uiStore = useUiStore()
@@ -21,6 +23,10 @@ const { avatarRole } = useAuth()
 function handleLogout() {
   logOut()
 }
+
+function handleLogoTextVisibilityChange(visible: boolean) {
+  isLogoTextVisible.value = visible
+}
 </script>
 
 <template>
@@ -29,10 +35,16 @@ function handleLogout() {
           items-center cyber-border"
   >
     <!-- ~ Left Cell: Logo ~ -->
-    <div class="justify-self-start">
-      <a href="/" class="focus-ring">
-        <AnimatedLogo />
+    <div class="justify-self-start flex items-center gap-4">
+      <a href="/" class="focus-ring logo-trigger">
+        <AnimatedLogo @text-visibility-change="handleLogoTextVisibilityChange" />
       </a>
+      <div
+        class="language-switcher-wrapper"
+        :class="{ 'moved-right': isLogoTextVisible }"
+      >
+        <LanguageSwitch />
+      </div>
     </div>
 
     <!-- ~ Center Cell: Desktop Navigation ~ -->
@@ -147,4 +159,12 @@ function handleLogout() {
 </template>
 
 <style scoped>
+.language-switcher-wrapper {
+  transition: transform 0.3s ease-out;
+  transform: translateX(0);
+}
+
+.language-switcher-wrapper.moved-right {
+  transform: translateX(80px);
+}
 </style>

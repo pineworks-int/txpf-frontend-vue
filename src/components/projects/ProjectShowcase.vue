@@ -3,12 +3,14 @@ import { storeToRefs } from 'pinia'
 import { onBeforeUnmount, onMounted } from 'vue'
 import ProjectCard from '@/components/projects/ProjectCard.vue'
 import { useProjects } from '@/composables/useProjects'
+import { useContentStore } from '@/stores/content'
 import { useProjectsStore } from '@/stores/projects'
 import { useUiStore } from '@/stores/ui'
 
 // ~ stores
 const projectsStore = useProjectsStore()
 const uiStore = useUiStore()
+const contentStore = useContentStore()
 
 const {
   isLoading,
@@ -19,6 +21,7 @@ const {
   sortDirection,
 } = storeToRefs(projectsStore)
 
+const { getContent } = storeToRefs(contentStore)
 const { isFilterDropdownOpen } = storeToRefs(uiStore)
 
 const { setClearFilters, setSortDirection } = projectsStore
@@ -46,7 +49,7 @@ onBeforeUnmount(() => {
   <section id="personal-projects" class="py-12 bg-surface-1 text-content max-w-4xl mx-auto">
     <div class="text-center">
       <h2 class="text-3xl font-bold font-oxanium text-primary-medium">
-        My Personal Projects
+        {{ getContent.projects.title }}
       </h2>
     </div>
 
@@ -59,20 +62,20 @@ onBeforeUnmount(() => {
           aria-controls="project-filter-dropdown"
           @click="setOpenFilterDropdown"
         >
-          Filters
+          {{ getContent.projects.buttons.filters }}
         </button>
         <button
           v-if="selectedTechnologies.length > 0"
           class="btn btn-danger ml-2 focus-ring font-oxanium"
           @click="setClearFilters"
         >
-          Clear
+          {{ getContent.projects.buttons.clear }}
         </button>
         <button
           class="btn btn-primary ml-2 focus-ring font-oxanium"
           @click="setSortDirection"
         >
-          Sort {{ sortDirection === 'asc' ? 'A-Z' : 'Z-A' }}
+          {{ getContent.projects.buttons.sort }} {{ sortDirection === 'asc' ? 'A-Z' : 'Z-A' }}
         </button>
 
         <div
