@@ -42,6 +42,8 @@ jobs:
         context: .
         push: ${{ github.ref == 'refs/heads/main' }}
         build-args: |
-          VITE_AUTH_API_URL=https://api.nspace.link
+          VITE_AUTH_API_URL=${{ secrets.AUTH_API_URL }}
+          VITE_SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
