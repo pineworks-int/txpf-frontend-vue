@@ -16,7 +16,7 @@ export function useGreetingAnimation(initialIsLoggedIn: boolean, initialUserType
     const hours = new Date().getHours()
     if (hours >= 6 && hours < 10)
       return 'morning'
-    if (hours >= 10 && hours < 12)
+    if (hours >= 10 && hours <= 12)
       return 'noon'
     if (hours >= 13 && hours < 18)
       return 'afternoon'
@@ -25,7 +25,7 @@ export function useGreetingAnimation(initialIsLoggedIn: boolean, initialUserType
 
   const greetingTimeOfDay = computed(() => {
     const hours = new Date().getHours()
-    if (hours >= 6 && hours < 12)
+    if (hours >= 6 && hours <= 12)
       return 'morning'
     if (hours >= 13 && hours < 18)
       return 'afternoon'
