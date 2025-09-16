@@ -16,7 +16,7 @@ export const useProjectsStore = defineStore('projects', () => {
 
   // ~-- GETTERS ---
   const projectStaticData = computed((): ProjectStaticData => {
-    return contentStore.getContent?.projects || {}
+    return contentStore.getContent?.projects.data || {}
   })
 
   const getProjectAppStaticUrl = (projectId: string): string | null => {

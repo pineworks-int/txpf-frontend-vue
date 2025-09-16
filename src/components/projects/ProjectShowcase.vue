@@ -49,7 +49,7 @@ onBeforeUnmount(() => {
   <section id="personal-projects" class="py-12 bg-surface-1 text-content max-w-4xl mx-auto">
     <div class="text-center">
       <h2 class="text-3xl font-bold font-oxanium text-primary-medium">
-        {{ getContent.projects.title }}
+        {{ getContent.projects.ui.title }}
       </h2>
     </div>
 
@@ -62,20 +62,20 @@ onBeforeUnmount(() => {
           aria-controls="project-filter-dropdown"
           @click="setOpenFilterDropdown"
         >
-          {{ getContent.projects.buttons.filters }}
+          {{ getContent.projects.ui.buttons.filters }}
         </button>
         <button
           v-if="selectedTechnologies.length > 0"
           class="btn btn-danger ml-2 focus-ring font-oxanium"
           @click="setClearFilters"
         >
-          {{ getContent.projects.buttons.clear }}
+          {{ getContent.projects.ui.buttons.clear }}
         </button>
         <button
           class="btn btn-primary ml-2 focus-ring font-oxanium"
           @click="setSortDirection"
         >
-          {{ getContent.projects.buttons.sort }} {{ sortDirection === 'asc' ? 'A-Z' : 'Z-A' }}
+          {{ getContent.projects.ui.buttons.sort }} {{ sortDirection === 'asc' ? 'A-Z' : 'Z-A' }}
         </button>
 
         <div

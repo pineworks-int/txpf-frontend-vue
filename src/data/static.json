@@ -1,18 +1,4 @@
 {
-    "projects": {
-        "71a6a281-b332-4405-948d-684c4628f9d8": {
-            "url": "mysubdomain1.nspace.link",
-            "description": "This is a description of the project1"
-        },
-        "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
-            "url": "mysubdomain2.nspace.link",
-            "description": "This is a description of the project2"
-        },
-        "databaseProjectId3": {
-            "url": "mysubdomain3.nspace.link",
-            "description": "This is a description of the project3"
-        }
-    },
     "social": {
         "linkedin": "https://www.linkedin.com/in/your-profile",
         "github": "https://github.com/your-username"
@@ -100,23 +86,27 @@
                 }
             },
             "projects": {
-                "title": "Personal Projects",
-                "buttons": {
-                    "filters": "Filters",
-                    "clear": "Clear",
-                    "sort": "Sort"
+                "ui": {
+                    "title": "Personal Projects",
+                    "buttons": {
+                        "filters": "Filters",
+                        "clear": "Clear",
+                        "sort": "Sort"
+                    }
                 },
-                "71a6a281-b332-4405-948d-684c4628f9d8": {
-                    "url": "mysubdomain1.nspace.link",
-                    "description": "This is a description of the project1"
-                },
-                "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
-                    "url": "mysubdomain2.nspace.link",
-                    "description": "This is a description of the project2"
-                },
-                "databaseProjectId3": {
-                    "url": "mysubdomain3.nspace.link",
-                    "description": "This is a description of the project3"
+                "data": {
+                    "71a6a281-b332-4405-948d-684c4628f9d8": {
+                        "url": "mysubdomain1.nspace.link",
+                        "description": "This is a description of the project1"
+                    },
+                    "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+                        "url": "mysubdomain2.nspace.link",
+                        "description": "This is a description of the project2"
+                    },
+                    "databaseProjectId3": {
+                        "url": "mysubdomain3.nspace.link",
+                        "description": "This is a description of the project3"
+                    }
                 }
             },
             "about-me": {
@@ -252,23 +242,27 @@
                 }
             },
             "projects": {
-                "title": "Projets Personnels",
-                "buttons": {
-                    "filters": "Filtres",
-                    "clear": "Effacer",
-                    "sort": "Tri"
+                "ui": {
+                    "title": "Projets Personnels",
+                    "buttons": {
+                        "filters": "Filtres",
+                        "clear": "Effacer",
+                        "sort": "Tri"
+                    }
                 },
-                "71a6a281-b332-4405-948d-684c4628f9d8": {
-                    "url": "mysubdomain1.nspace.link",
-                    "description": "Ceci est une description du projet1"
-                },
-                "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
-                    "url": "mysubdomain2.nspace.link",
-                    "description": "Ceci est une description du projet2"
-                },
-                "databaseProjectId3": {
-                    "url": "mysubdomain3.nspace.link",
-                    "description": "Ceci est une description du projet3"
+                "data": {
+                    "71a6a281-b332-4405-948d-684c4628f9d8": {
+                        "url": "mysubdomain1.nspace.link",
+                        "description": "Ceci est une description du projet1"
+                    },
+                    "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+                        "url": "mysubdomain2.nspace.link",
+                        "description": "Ceci est une description du projet2"
+                    },
+                    "databaseProjectId3": {
+                        "url": "mysubdomain3.nspace.link",
+                        "description": "Ceci est une description du projet3"
+                    }
                 }
             },
             "about-me": {
