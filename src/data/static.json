@@ -1,0 +1,320 @@
+{
+    "social": {
+        "linkedin": "https://www.linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username"
+    },
+    "content": {
+        "en": {
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Personal Projects",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "About me",
+                        "url": "/about-me"
+                    }
+                ]
+            },
+            "hero": {
+                "title": "[$USER]@MyPortfolio: ~#",
+                "subtitle": "A collection of 1s and 0s, arranged with purpose.\nFor now...",
+                "greetingAnimation": {
+                    "timeStatus": {
+                        "morning": "STATUS: Hibernation cycle complete",
+                        "noon": "STATUS: System warms-up",
+                        "afternoon": "STATUS: System at peak load",
+                        "evening": "STATUS: Entering hibernation cycle"
+                    },
+                    "loginStatus": {
+                        "loggedIn": {
+                            "part1": "-- User signature recognized --",
+                            "part2": "==> Root access granted"
+                        },
+                        "notLoggedIn": {
+                            "part1": "-- User signature unknown --",
+                            "part2": "==> Please login to get full access"
+                        }
+                    },
+                    "userGreeting": {
+                        "morning": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good morning."
+                            },
+                            "guest": {
+                                "line3": "Morning dear guest, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good morning, you're being monitored."
+                            }
+                        },
+                        "afternoon": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good afternoon."
+                            },
+                            "guest": {
+                                "line3": "Afternoon dear guest, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good afternoon, you're being monitored."
+                            }
+                        },
+                        "evening": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good evening."
+                            },
+                            "guest": {
+                                "line3": "Evening dear guest, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good evening, you're being monitored."
+                            }
+                        }
+                    }
+                }
+            },
+            "body": {
+                "intro": {
+                    "title": "What if we were to meet ?",
+                    "content": "In a world where computing technologies are developing at a breakneck pace, where artificial intelligence is gradually weaving itself into our daily routines, humanity's strength still lies in our capacity to meet one another, to forge connections and to exchange with fluidity.",
+                    "question": "\"... What if we were to meet ?\""
+                },
+                "presentation": {
+                    "title": "Hello, welcome, and delighted to meet you!",
+                    "content": "My name is Thibault, and I'm a web developer by passion — not following a trend or rushing to join the rat race.\nI chose this profession quite simply **because I love it**.\n\nThe web has fascinated me from the very beginning, and I've naturally devoted the better part of my career to it.\n\nToday, I work primarily with **TypeScript**, **Vue.js/Nuxt**, **Tailwind CSS**, and **PostgreSQL**.\n\nMy CV is available in the [\"About me\"](/about-me) section should you wish to learn more.\n\nKeep your chin up, and **let's stay in touch**!\n\nYours sincerely,\n**Thibault**"
+                }
+            },
+            "projects": {
+                "ui": {
+                    "title": "Personal Projects",
+                    "buttons": {
+                        "filters": "Filters",
+                        "clear": "Clear",
+                        "sort": "Sort"
+                    }
+                },
+                "data": {
+                    "71a6a281-b332-4405-948d-684c4628f9d8": {
+                        "url": "mysubdomain1.nspace.link",
+                        "description": "This is a description of the project1"
+                    },
+                    "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+                        "url": "mysubdomain2.nspace.link",
+                        "description": "This is a description of the project2"
+                    },
+                    "databaseProjectId3": {
+                        "url": "mysubdomain3.nspace.link",
+                        "description": "This is a description of the project3"
+                    }
+                }
+            },
+            "about-me": {
+                "header": {
+                    "name": "Name",
+                    "surname": "Surname",
+                    "age": "Age",
+                    "job": "Developer",
+                    "download": "Download Resume"
+                },
+                "sidebar": {
+                    "sections": {
+                        "contact": "Contact",
+                        "hardskills": "Hardskills",
+                        "softskills": "Softskills",
+                        "languages": "Languages",
+                        "hobbies": "Hobbies & Interests"
+                    },
+                    "hardskillsSubs": {
+                        "frontend": "Frontend",
+                        "backend": "Backend",
+                        "database": "Database",
+                        "tools": "Tools",
+                        "os": "Systems"
+                    },
+                    "softskillsContent": {
+                        "strategic": "Strategic",
+                        "adaptable": "Adaptable",
+                        "optimiser": "Optimiser",
+                        "perfectionist": "Perfectionist",
+                        "communicative": "Communicative",
+                        "empathetic": "Empathetic",
+                        "persistent": "Persistent"
+                    },
+                    "languagesContent": {
+                        "english": "English (C2/Pro)",
+                        "french": "French (Native)"
+                    },
+                    "hobbiesContent": {
+                        "guitar": "Guitar",
+                        "astro": "Astronomy",
+                        "scifi": "Sci-fi",
+                        "volley": "Volleyball",
+                        "sail": "Sailing",
+                        "glide": "Paragliding",
+                        "mountains": "Mountains",
+                        "open_source": "Open-source",
+                        "hardware": "Hardware",
+                        "code": "Coding"
+                    }
+                }
+            }
+        },
+        "fr": {
+            "nav": {
+                "uiLinks": [
+                    {
+                        "label": "Projets Personnels",
+                        "url": "#personal-projects"
+                    },
+                    {
+                        "label": "À propos de moi",
+                        "url": "/about-me"
+                    }
+                ]
+            },
+            "hero": {
+                "title": "[$USER]@MonPortfolio: ~#",
+                "subtitle": "Une suite de 0 et de 1, formant un tout cohérent.\nPour l'instant...",
+                "greetingAnimation": {
+                    "timeStatus": {
+                        "morning": "STATUS: Hibernation cycle complete.",
+                        "noon": "STATUS: System warms-up",
+                        "afternoon": "STATUS: System at peak load",
+                        "evening": "STATUS: Entering hibernation cycle"
+                    },
+                    "loginStatus": {
+                        "loggedIn": {
+                            "part1": "> User signature recognized",
+                            "part2": "==> Root access granted"
+                        },
+                        "notLoggedIn": {
+                            "part1": "> User signature unknown",
+                            "part2": "==> Please login to get full access"
+                        }
+                    },
+                    "userGreeting": {
+                        "morning": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good morning."
+                            },
+                            "guest": {
+                                "line3": "Morning your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good morning, you're being monitored."
+                            }
+                        },
+                        "afternoon": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good afternoon."
+                            },
+                            "guest": {
+                                "line3": "Afternoon your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good afternoon, you're being monitored."
+                            }
+                        },
+                        "evening": {
+                            "admin": {
+                                "line3": "Ahoy Cap'tain, have a good evening."
+                            },
+                            "guest": {
+                                "line3": "Evening your highness, please proceed."
+                            },
+                            "unknown": {
+                                "line3": "Good evening, you're being monitored."
+                            }
+                        }
+                    }
+                }
+            },
+            "body": {
+                "intro": {
+                    "title": "Et si on se rencontrait ?",
+                    "content": "Dans un monde où les technologies informatiques se développent à un rythme effréné, où l'intelligence artificielle intègre progressivement nos routines quotidiennes, la force de l'Homme, elle, réside toujours dans notre capacité à nous rencontrer, à nouer des liens et à échanger de manière fluide.",
+                    "question": "\"... Et si on se rencontrait ?\""
+                },
+                "presentation": {
+                    "title": "Bonjour, Bienvenue, et Enchanté !",
+                    "content": "Je m'appelle Thibault et je suis développeur web par passion — et non par effet de mode ou pour rejoindre une course *effrénée* avec des millions d'autres.\nSi j'ai choisi ce métier, c'est tout simplement **parce que j'aime ça**.\n\nLe web me fascine depuis mes débuts, et j'y ai naturellement consacré l'essentiel de ma carrière.\n\nAujourd'hui, je travaille principalement avec **TypeScript**, **Vue.js/Nuxt**, **Tailwind CSS**, et **PostgreSQL**.\n\nMon CV est à votre disposition dans la section [\"À propos de moi\"](/about-me) si vous souhaitez en savoir plus.\n\nGardez la pêche, **gardons le contact** !\n\nBien à vous,\n**Thibault**"
+                }
+            },
+            "projects": {
+                "ui": {
+                    "title": "Projets Personnels",
+                    "buttons": {
+                        "filters": "Filtres",
+                        "clear": "Effacer",
+                        "sort": "Tri"
+                    }
+                },
+                "data": {
+                    "71a6a281-b332-4405-948d-684c4628f9d8": {
+                        "url": "mysubdomain1.nspace.link",
+                        "description": "Ceci est une description du projet1"
+                    },
+                    "d6fecd35-9908-4d80-8640-87da5ca8c5cd": {
+                        "url": "mysubdomain2.nspace.link",
+                        "description": "Ceci est une description du projet2"
+                    },
+                    "databaseProjectId3": {
+                        "url": "mysubdomain3.nspace.link",
+                        "description": "Ceci est une description du projet3"
+                    }
+                }
+            },
+            "about-me": {
+                "header": {
+                    "name": "Nom",
+                    "surname": "Prénom",
+                    "age": "Âge",
+                    "job": "Développeur",
+                    "download": "Télécharger le CV"
+                },
+                "sidebar": {
+                    "sections": {
+                        "contact": "Contact",
+                        "hardskills": "Savoir-faire",
+                        "softskills": "Savoir-être",
+                        "languages": "Langues",
+                        "hobbies": "Centres d'intérêt"
+                    },
+                    "hardskillsSubs": {
+                        "frontend": "Frontend",
+                        "backend": "Backend",
+                        "database": "Base de données",
+                        "tools": "Outils",
+                        "os": "Systèmes"
+                    },
+                    "softskillsContent": {
+                        "strategic": "Stratégique",
+                        "adaptable": "Agile",
+                        "optimiser": "Optimiseur",
+                        "perfectionist": "Perfectionniste",
+                        "communicative": "Communicatif",
+                        "empathetic": "Empathique",
+                        "persistent": "Persistant"
+                    },
+                    "languagesContent": {
+                        "french": "Français (Natif)",
+                        "english": "Anglais (C2/Pro)"
+                    },
+                    "hobbiesContent": {
+                        "guitar": "Guitare",
+                        "astro": "Astronomie",
+                        "scifi": "Science-fiction",
+                        "volley": "Volleyball",
+                        "sail": "Voile",
+                        "glide": "Parapente",
+                        "mountains": "Montagnes",
+                        "open_source": "Open-source",
+                        "hardware": "Matériel",
+                        "code": "Programmation"
+                    }
+                }
+            }
+        }
+    }
+}
