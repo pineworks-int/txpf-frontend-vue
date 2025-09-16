@@ -9,6 +9,7 @@ export const useUiStore = defineStore('ui', () => {
   const isProjectDetailModalOpen = ref(false)
   const selectedProject = ref<ProjectProps | null>(null)
   const pendingProjectAppAccess = ref<string | null>(null)
+  const isAuthVerificationLoading = ref(false)
 
   // ~-- SETTERS ---
   const setOpenAuthModal = () => {
@@ -41,6 +42,10 @@ export const useUiStore = defineStore('ui', () => {
     isFilterDropdownOpen.value = false
   }
 
+  const setAuthVerificationLoading = (loading: boolean) => {
+    isAuthVerificationLoading.value = loading
+  }
+
   return {
     // STATES
     isAuthModalOpen,
@@ -48,6 +53,7 @@ export const useUiStore = defineStore('ui', () => {
     isProjectDetailModalOpen,
     selectedProject,
     pendingProjectAppAccess,
+    isAuthVerificationLoading,
     // SETTERS
     setOpenAuthModal,
     setCloseAuthModal,
@@ -56,5 +62,6 @@ export const useUiStore = defineStore('ui', () => {
     setPendingProjectAppAccess,
     setOpenFilterDropdown,
     setCloseFilterDropdown,
+    setAuthVerificationLoading,
   }
 })
