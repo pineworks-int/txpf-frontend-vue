@@ -3,6 +3,9 @@ import HeroSection from '@/components/layout/HeroSection.vue'
 import IntroSection from '@/components/layout/IntroSection.vue'
 import ProjectDetailModal from '@/components/projects/ProjectDetailModal.vue'
 import ProjectShowcase from '@/components/projects/ProjectShowcase.vue'
+import useAuth from '@/composables/useAuth'
+
+const { openDemo } = useAuth()
 </script>
 
 <template>
@@ -12,6 +15,12 @@ import ProjectShowcase from '@/components/projects/ProjectShowcase.vue'
     <ProjectShowcase />
     <ProjectDetailModal />
   </div>
+  <button
+    class="px-4 py-2 rounded bg-black text-white"
+    @click="openDemo('http://localhost:4000')"
+  >
+    Open Demo (local)
+  </button>
 </template>
 
 #00ff00
