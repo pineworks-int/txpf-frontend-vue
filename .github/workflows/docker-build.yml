@@ -3,8 +3,6 @@ name: Build Vue.js Docker Image
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   REGISTRY: ghcr.io
